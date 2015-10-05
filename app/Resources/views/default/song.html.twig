@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{# avoiding the extra RTT and other crap that would come with a nice clean AJAX request #}
+	<script> 
+		window.songTitle = "{{song.songtitle}}";
+		window.tracks = 
+		[ {%for track in tracks%} 
+			{	title:"{{track.tracktitle}}" ,
+				url:"{{track.url}}" ,
+				id:"{{track.id}}",
+				index:"{{loop.index0}}", 
+			},
+		{%endfor%} ] ;
+		
+		window.URLs = 
+		[ {%for track in tracks%} 
+			"{{track.url}}",
+		{%endfor%} ] ;
+	</script> 
+	
+    Song: {{song.songtitle}}  (id {{song.id}} )<br><br>
+
+{%for track in tracks%}
+	{{track.tracktitle}} 	<a href="{{track.url}}">dl</a>
+	<br>
+	<input type="range" min="0" max="75" value="75" oninput=" song.changeTrackVolume(this.value, {{loop.index0}}) "/>
+
+	<br>
+{%endfor%}
+
+<br>		
+<button disabled data-bind="enable: loaded" id="play" type="button" onclick="song.play()">play</button>
+<input type='checkbox' data-bind="checked: playing" />
+<button disabled data-bind="enable: loaded && playing" onclick="song.stop()">stop</button>
+		
+Seek: 
+	<input disabled data-bind="enable: loaded" type="range" value="0" id="scrub" onchange = "song.play(value)"/>	
+		
+		
+		
+		
+		<script src="/js/AudioSampleLoader.js"></script>
+		<script src = "/js/song.js"></script>
+		
+{% endblock %}

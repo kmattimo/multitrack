@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<link rel="stylesheet" type="text/css" href="/css/dropzone.css">
+<script src="/js/dropzone.js"></script>
+<script src="/js/newsong.js"></script>
+
+New Song <br> 
+<input type="text" data-bind='value:songTitle, valueUpdate: "afterkeydown"' />
+
+<form action="/upload" class="dropzone" id="my-dropzone"> </form>
+
+<br><br>
+<button data-bind='enable: queue().length>0' id="saveSong">Save Song</button>
+
+<p data-bind='foreach:queue'>
+<input data-bind="value: name"/> <br>
+</p>
+
+		
+{% endblock %}

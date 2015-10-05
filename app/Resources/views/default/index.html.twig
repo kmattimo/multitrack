@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    Homepage, bitch. <br>
+	
+	{%for song in songs %}
+		<a href="/song/{{song.id}}">{{song.songtitle}} </a> <br>
+	{%endfor%}
+{% endblock %}
