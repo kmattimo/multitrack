@@ -1,9 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    Homepage, bitch. <br>
+    <div class="row">
 	
+    <div class="hero">
+    <h2> Web based audio rehearsal tool <br>
+       create your own mix. </h2>
+    </div>
+    
 	{%for song in songs %}
 		<a href="/song/{{song.id}}">{{song.songtitle}} </a> <br>
 	{%endfor%}
+    
+    </div>
 {% endblock %}

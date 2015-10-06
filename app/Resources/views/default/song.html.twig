@@ -24,6 +24,10 @@
 	<div class="col s12">
 		<h2> {{song.songtitle}} </h2>
 		
+		<div class="song-loading" data-bind="visible:!loaded" >
+			Loading ... please wait!
+		</div>
+		
 		<ul class="collection with-header">
 			<li class="collection-header">
 				
@@ -32,7 +36,8 @@
 				<button disabled data-bind="enable: loaded && playing" onclick="song.stop()">stop</button>
 						
 				Seek: 
-					<input disabled data-bind="enable: loaded" type="range" value="0" id="scrub" onchange = "song.play(value)"/>	
+					<input disabled data-bind="enable: loaded, value:seekFraction" type="range" id="scrub" onchange = "song.play(value)"/>	
+					<input type="text" data-bind="value:seekFraction">
 			</li>
 				
 			{%for track in tracks%}
