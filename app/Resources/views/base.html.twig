@@ -2,8 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Multitrack by kmattimo{% endblock %}</title>
         {% block stylesheets %}	
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
 		{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 		<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -11,12 +13,23 @@
 	
     </head>
     <body>
-		<a href="/">Home</a>
-		<a href="/newsong">Create Song</a> 
-		<br><br>
-		
-        {% block body %}{% endblock %}
-        {% block javascripts %}
+
+    <nav>
+       <div class="nav-wrapper">
+         <a href="/" class="brand-logo">multitrack</a>
+         <ul id="nav-mobile" class="left">
+           <li><a href="/newsong">New Song</a></li>
+         </ul>
+       </div>
+     </nav>
+
+
+    <div class="container">
+
+    {% block body %}{% endblock %}
+    
+    </div>
+    {% block javascripts %}
 		
 			
 		{% endblock %}

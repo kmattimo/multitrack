@@ -19,28 +19,39 @@
 		{%endfor%} ] ;
 	</script> 
 	
-    Song: {{song.songtitle}}  (id {{song.id}} )<br><br>
+	
+<div class="row"> 
+	<div class="col s12">
+		<h2> {{song.songtitle}} </h2>
+		
+		<ul class="collection with-header">
+			<li class="collection-header">
+				
+				<button disabled data-bind="enable: loaded" id="play" type="button" onclick="song.play()">play</button>
+				<input type='checkbox' data-bind="checked: playing" />
+				<button disabled data-bind="enable: loaded && playing" onclick="song.stop()">stop</button>
+						
+				Seek: 
+					<input disabled data-bind="enable: loaded" type="range" value="0" id="scrub" onchange = "song.play(value)"/>	
+			</li>
+				
+			{%for track in tracks%}
+				<li class="collection-item">
+				{{track.tracktitle}} 	<a href="{{track.url}}">dl</a>
+				<br>
+				<input type="range" min="0" max="75" value="75" oninput=" song.changeTrackVolume(this.value, {{loop.index0}}) "/>
 
-{%for track in tracks%}
-	{{track.tracktitle}} 	<a href="{{track.url}}">dl</a>
-	<br>
-	<input type="range" min="0" max="75" value="75" oninput=" song.changeTrackVolume(this.value, {{loop.index0}}) "/>
+				</li>
+			{%endfor%}
 
-	<br>
-{%endfor%}
+		</ul>
 
-<br>		
-<button disabled data-bind="enable: loaded" id="play" type="button" onclick="song.play()">play</button>
-<input type='checkbox' data-bind="checked: playing" />
-<button disabled data-bind="enable: loaded && playing" onclick="song.stop()">stop</button>
-		
-Seek: 
-	<input disabled data-bind="enable: loaded" type="range" value="0" id="scrub" onchange = "song.play(value)"/>	
-		
-		
-		
-		
-		<script src="/js/AudioSampleLoader.js"></script>
-		<script src = "/js/song.js"></script>
-		
+	</div>
+</div>
+			
+				
+				
+				<script src="/js/AudioSampleLoader.js"></script>
+				<script src = "/js/song.js"></script>
+				
 {% endblock %}
