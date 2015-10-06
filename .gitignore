@@ -10,3 +10,4 @@
 /vendor/
 /web/bundles/
 /web/upload/*
+/node_modules/
