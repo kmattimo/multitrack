@@ -1,0 +1,24 @@
+{
+  "name": "multitrack",
+  "version": "1.0.0",
+  "description": "dev files for multitrack",
+  "main": "Gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.0.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kmattimo/multitrack.git"
+  },
+  "author": "Kyle Mattimore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kmattimo/multitrack/issues"
+  },
+  "homepage": "https://github.com/kmattimo/multitrack#readme"
+}
