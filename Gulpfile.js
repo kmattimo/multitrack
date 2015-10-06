@@ -1,7 +1,9 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 
-var input = './web/materialize-src/sass/*';
+//all scss imported in site.scss, except page-specific stuff
+var input = './web/scss/site.scss';
+var watchFiles = './web/scss/**/*.scss';
 var output = './web/css/';
 
 gulp.task('sass', function() {
@@ -12,5 +14,5 @@ gulp.task('sass', function() {
 
 //Watch task
 gulp.task('default',function() {
-    gulp.watch('sass/**/*.scss',['sass']);
+    gulp.watch(watchFiles,['sass']);
 });
