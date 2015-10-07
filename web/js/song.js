@@ -15,16 +15,16 @@ var Song = function(audioLoader) {
 	var self = this;
 	this.loaded = ko.observable(false);
 	this.playing = ko.observable(false);
-
+	this.startTime = 0;
 	this.buffers = audioLoader.response;
 	this.loader = audioLoader;
 	this.sources = [];
 	this.gainNodes = [];
 	this.seekTime = ko.observable();
-	this.seekFraction = ko.computed(function() {
-		//return (this.seekTime() / this.duration() );
-		console.log(self.seekTime());
-		return (self.seekTime() );
+	this.getCurrentTime = function() { return self.loader.ctx.currentTime; }
+	this.playingTime = ko.computed(function() {
+		if(!self.playing()) return 0;
+		return (self.seekTime() - self.startTime );
 	});
 	
 	$("#scrub").attr("max",this.buffers[0].duration);
@@ -56,6 +56,7 @@ var Song = function(audioLoader) {
 		if(time == null) {
 			time = 0;
 		}
+		this.startTime = self.getCurrentTime();
 		this.sources.forEach(function(thisSource) { thisSource.start(0, time)} ) ;
 		//this.playing = true;
 		this.playing(true);
@@ -77,13 +78,7 @@ var Song = function(audioLoader) {
 		
 		this.gainNodes[i].gain.value = (fraction * fraction) ;
 	};
-	
-	this.duration = function() {
-			return this.buffers[0].duration;
-	};
-	// this.seekTime = function() {
-	// 		return this.loader.ctx.currentTime;
-	// };
+
 
 };
 
