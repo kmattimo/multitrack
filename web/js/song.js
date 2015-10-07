@@ -21,7 +21,8 @@ var Song = function(audioLoader) {
 	this.sources = [];
 	this.gainNodes = [];
 	this.seekTime = ko.observable();
-	this.getCurrentTime = function() { return self.loader.ctx.currentTime; }
+	this.getCurrentTime = function() { return self.loader.ctx.currentTime; };
+	this.test = function() {return true;};
 	this.playingTime = ko.computed(function() {
 		if(!self.playing()) return 0;
 		return (self.seekTime() - self.startTime );
@@ -56,7 +57,7 @@ var Song = function(audioLoader) {
 		if(time == null) {
 			time = 0;
 		}
-		this.startTime = self.getCurrentTime();
+		this.startTime = self.getCurrentTime() - time;
 		this.sources.forEach(function(thisSource) { thisSource.start(0, time)} ) ;
 		//this.playing = true;
 		this.playing(true);

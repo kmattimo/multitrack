@@ -36,7 +36,7 @@
 				<button disabled data-bind="enable: loaded && playing" onclick="song.stop()">stop</button>
 						
 				Seek: 
-					<input disabled data-bind="enable: loaded, value:playingTime" type="range" id="scrub" onchange = "song.play(value)"/>	
+					<input disabled data-bind="enable: loaded, value:playingTime, event: {change: test}" onchange="song.play(value)" type="range" id="scrub"/>	
 					<input type="text" data-bind="value:playingTime">
 			</li>
 				
