@@ -31,12 +31,12 @@
 		<ul class="collection with-header">
 			<li class="collection-header">
 				
-				<button disabled data-bind="enable: loaded" id="play" type="button" onclick="song.play()">play</button>
-				<input type='checkbox' data-bind="checked: playing" />
-				<button disabled data-bind="enable: loaded && playing" onclick="song.stop()">stop</button>
+				<button class= "waves-effect waves-light btn" disabled data-bind="enable: loaded" id="play" type="button" onclick="song.play()">play</button>
+								
+				<button class="waves-effect waves-light btn" disabled data-bind="enable: loaded && playing" onclick="song.stop()">stop</button>
 						
 				Seek: 
-					<input disabled data-bind="enable: loaded, value:playingTime, event: {change: test}" onchange="song.play(value)" type="range" id="scrub"/>	
+					<input disabled data-bind="enable: loaded, value:playingTime" onchange="song.play(value)" type="range" id="seekBar"/>	
 					<input type="text" data-bind="value:playingTime">
 			</li>
 				
@@ -44,7 +44,12 @@
 				<li class="collection-item">
 				{{track.tracktitle}} 	<a href="{{track.url}}">dl</a>
 				<br>
-				<input type="range" min="0" max="75" value="75" oninput=" song.changeTrackVolume(this.value, {{loop.index0}}) "/>
+				<input type="checkbox" data-bind="checked: muted()[{{loop.index0}}]" class="filled-in" id="track{{loop.index0}}mute" />
+      	<label for="track{{loop.index0}}mute">Mute</label>
+				
+				<input type="text" data-bind="value: trackVolume()[{{loop.index0}}]"/>
+				
+				<input disabled data-bind="enable: loaded" class="volume-slider" type="range" min="0" max="75" value="75" oninput=" song.changeTrackVolume(this.value, {{loop.index0}}) "/>
 
 				</li>
 			{%endfor%}

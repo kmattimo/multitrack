@@ -141,5 +141,60 @@ class DefaultController extends Controller
 			return new Response('does not exist');
 			}
 	}
+  /**
+     * @Route("/init", name="init")
+   */	
+  public function initAction()
+  {
+    $em = $this->getDoctrine()->getManager();
+      
+    $repository = $this->getDoctrine()->getRepository('AppBundle:song');
+    $existingSongs = $repository->findBySongtitle("Hide and Seek (demo)");
+    if($existingSongs) {
+      foreach ($existingSongs as $song ) {
+        $em->remove($song);
+      }
+    }
+    
+    
+    $newSong = new song();
+    $newSong->setUserid(0);
+    $newSong->setSongtitle("Hide and Seek (demo)");  
+      $em->persist($newSong);
+      $em->flush();
+    $songid = $newSong->getId();
+    $newTrack = new track();
+    $newTrack->setSongid($songid );
+    $newTrack->setUrl("/example/HaS/01-Piano.mp3");
+		$newTrack->setTracktitle("All Piano");
+		$em->persist($newTrack);
+    
+    $newTrack2 = new track();
+    $newTrack2->setSongid($songid );
+    $newTrack2->setUrl("/example/HaS/02-Soprano.mp3");
+    $newTrack2->setTracktitle("Soprano");
+    $em->persist($newTrack2);
+    
+    $newTrack2 = new track();
+    $newTrack2->setSongid($songid );
+    $newTrack2->setUrl("/example/HaS/03-Alto.mp3");
+    $newTrack2->setTracktitle("Alto");
+    $em->persist($newTrack2);
+    
+    $newTrack2 = new track();
+    $newTrack2->setSongid($songid );
+    $newTrack2->setUrl("/example/HaS/04-Tenor.mp3");
+    $newTrack2->setTracktitle("Tenor");
+    $em->persist($newTrack2);
+    
+    $newTrack2 = new track();
+    $newTrack2->setSongid($songid );
+    $newTrack2->setUrl("/example/HaS/05-Bass.mp3");
+    $newTrack2->setTracktitle("Bass");
+    $em->persist($newTrack2);
+    
+      $em->flush();
+    return new Response("ok");        
+  }
 	
 }

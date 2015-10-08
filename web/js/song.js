@@ -21,26 +21,41 @@ var Song = function(audioLoader) {
 	this.sources = [];
 	this.gainNodes = [];
 	this.seekTime = ko.observable();
+	this.trackVolume = ko.observableArray();
+	this.muted = ko.observableArray();
+	for(var i=0; i<this.loader.response.length; i++) {
+		this.trackVolume().push(100);
+		this.muted().push(false);
+	}
 	this.getCurrentTime = function() { return self.loader.ctx.currentTime; };
-	this.test = function() {return true;};
 	this.playingTime = ko.computed(function() {
 		if(!self.playing()) return 0;
 		return (self.seekTime() - self.startTime );
 	});
+	this.setGain = function( index) {
+		if(muted()[index]) {
+			this.gainNodes[index].gain.value = 0;
+		}
+		else {
+			var volumeInt = self.trackVolume()[index];
+			var fraction = parseInt(volumeInt) / 100;
+			this.gainNodes[index].gain.value = (fraction * fraction) ;
+		}
+	}
 	
-	$("#scrub").attr("max",this.buffers[0].duration);
+	$("#seekBar").attr("max",this.buffers[0].duration);
 	ko.applyBindings(this);
-//	$("#play").removeClass('btn-danger').addClass('btn-success');
 	
 	this.loaded(true);
 	
 	this.initBuffers = function() {
-		for(i=0; i<this.loader.response.length; i++) {
+		for(var i=0; i<this.loader.response.length; i++) {
 			this.gainNodes[i] = this.loader.ctx.createGain();
 			this.sources[i] =  this.loader.ctx.createBufferSource();
 			this.sources[i].buffer = this.loader.response[i];
 			this.sources[i].connect(this.gainNodes[i]);
 			this.gainNodes[i].connect(this.loader.ctx.destination);
+			self.setGain(i);
 		}
 	console.log("initialized buffers");
 	};
@@ -73,10 +88,9 @@ var Song = function(audioLoader) {
 	
 	this.changeTrackVolume = function(volume, i) {
 		console.log("track volume" , volume, i);
-		
 		//todo: eliminate hardcoded 100
+		// self.trackVolume()[i] = volume
 		var fraction = parseInt(volume) / 100;
-		
 		this.gainNodes[i].gain.value = (fraction * fraction) ;
 	};
 
