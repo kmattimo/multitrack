@@ -7,3 +7,25 @@
 .volume-slider {
     max-width:150px;
 }
+.pan-slider {
+    max-width:100px;
+}
+
+
+.volume-group {
+  display:inline;
+}
+.pan-group {
+  display: inline;
+}
+
+.mute-checkbox {
+  display: none;
+}
+.mute-checkbox + label:before {
+    content:"asdf";
+}
+
+.mute-checkbox:checked + label:before {
+  content:"fff";
+} 

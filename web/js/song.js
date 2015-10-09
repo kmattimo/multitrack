@@ -3,7 +3,11 @@ var loaderWrapper = function (URLs) {
 	this.loader = new AudioSampleLoader();
 	this.loader.ctx = new (window.AudioContext || window.webkitAudioContext)();
 	this.loader.src = URLs;
-	this.loader.onerror = function () { console.log("Loader error!"); };
+	this.loader.onerror = function () { 
+		console.log("Loader error!"); 
+		//no knockoutjs loaded yet, so lets go back to basics
+		document.getElementById("song-error").style.display="block";
+	};
 	
 	this.loader.onload = function () { 	song = new Song(this); };
 	this.playing = false;
@@ -21,13 +25,16 @@ var Song = function(audioLoader) {
 	this.numTracks = this.buffers.length;
 	this.sources = [];
 	this.gainNodes = [];
+	this.panNodes = [];
 	this.seekTime = ko.observable();
 	this.trackVolume = [];
 	this.muted = [];
+	this.pan = [];
 	
 	for(var i=0; i<self.numTracks; i++) {
 		this.trackVolume.push(ko.observable(100));
 		this.muted.push( ko.observable(false) );
+		this.pan.push( ko.observable(0) );
 	}
 	this.getCurrentTime = function() { return self.loader.ctx.currentTime; };
 	this.playingTime = ko.computed(function() {
@@ -43,12 +50,15 @@ var Song = function(audioLoader) {
 			var fraction = parseInt(volumeInt) / 100;
 			this.gainNodes[index].gain.value = (fraction * fraction) ;
 		}
+		self.panNodes[index].pan.value = self.pan[index]();
 	}
 	this.reTrigger = function() {
 		console.log("change detected");
 		for(var i=0;i<self.numTracks;i++) {
 				self.setGain(i);
+				
 		}
+		
 	}
 	
 	$("#seekBar").attr("max",this.buffers[0].duration);
@@ -57,6 +67,7 @@ var Song = function(audioLoader) {
 for(var i=0; i<self.numTracks; i++) {
 	this.muted[i].subscribe( self.reTrigger );
 	this.trackVolume[i].subscribe( self.reTrigger );
+	this.pan[i].subscribe ( self.reTrigger);
 }
 	this.loaded(true);
 	
@@ -64,9 +75,11 @@ for(var i=0; i<self.numTracks; i++) {
 		for(var i=0; i<this.loader.response.length; i++) {
 			this.gainNodes[i] = this.loader.ctx.createGain();
 			this.sources[i] =  this.loader.ctx.createBufferSource();
+			this.panNodes[i] = this.loader.ctx.createStereoPanner();
 			this.sources[i].buffer = this.loader.response[i];
 			this.sources[i].connect(this.gainNodes[i]);
-			this.gainNodes[i].connect(this.loader.ctx.destination);
+			this.gainNodes[i].connect(this.panNodes[i]);
+			this.panNodes[i].connect(this.loader.ctx.destination);
 			self.setGain(i);
 		}
 	console.log("initialized buffers");
@@ -74,7 +87,10 @@ for(var i=0; i<self.numTracks; i++) {
 	
 	setInterval(function() {   
 		self.seekTime(self.loader.ctx.currentTime);
-	}, 1000);
+		if(self.seekTime >= self.playingTime() ) {
+				self.playing(false);
+		}
+	}, 500);
 		
 	this.play = function (time) {
 		if(this.playing() == true) {
