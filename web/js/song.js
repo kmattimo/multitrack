@@ -18,34 +18,46 @@ var Song = function(audioLoader) {
 	this.startTime = 0;
 	this.buffers = audioLoader.response;
 	this.loader = audioLoader;
+	this.numTracks = this.buffers.length;
 	this.sources = [];
 	this.gainNodes = [];
 	this.seekTime = ko.observable();
-	this.trackVolume = ko.observableArray();
-	this.muted = ko.observableArray();
-	for(var i=0; i<this.loader.response.length; i++) {
-		this.trackVolume().push(100);
-		this.muted().push(false);
+	this.trackVolume = [];
+	this.muted = [];
+	
+	for(var i=0; i<self.numTracks; i++) {
+		this.trackVolume.push(ko.observable(100));
+		this.muted.push( ko.observable(false) );
 	}
 	this.getCurrentTime = function() { return self.loader.ctx.currentTime; };
 	this.playingTime = ko.computed(function() {
 		if(!self.playing()) return 0;
 		return (self.seekTime() - self.startTime );
 	});
-	this.setGain = function( index) {
-		if(muted()[index]) {
+	this.setGain = function(index) {
+		if(self.muted[index]()) {
 			this.gainNodes[index].gain.value = 0;
 		}
 		else {
-			var volumeInt = self.trackVolume()[index];
+			var volumeInt = self.trackVolume[index]();
 			var fraction = parseInt(volumeInt) / 100;
 			this.gainNodes[index].gain.value = (fraction * fraction) ;
+		}
+	}
+	this.reTrigger = function() {
+		console.log("change detected");
+		for(var i=0;i<self.numTracks;i++) {
+				self.setGain(i);
 		}
 	}
 	
 	$("#seekBar").attr("max",this.buffers[0].duration);
 	ko.applyBindings(this);
 	
+for(var i=0; i<self.numTracks; i++) {
+	this.muted[i].subscribe( self.reTrigger );
+	this.trackVolume[i].subscribe( self.reTrigger );
+}
 	this.loaded(true);
 	
 	this.initBuffers = function() {
@@ -89,7 +101,7 @@ var Song = function(audioLoader) {
 	this.changeTrackVolume = function(volume, i) {
 		console.log("track volume" , volume, i);
 		//todo: eliminate hardcoded 100
-		// self.trackVolume()[i] = volume
+		// self.trackVolume[i] = volume
 		var fraction = parseInt(volume) / 100;
 		this.gainNodes[i].gain.value = (fraction * fraction) ;
 	};
