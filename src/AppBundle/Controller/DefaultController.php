@@ -31,13 +31,29 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/song/{id}", name="song")
+     * @Route("/songID/{id}", name="song",defaults={"slug"=null})
+     * @Route("/song/{slug}", name="song2", defaults={"id"=null})
      */	
-	public function songAction($id)
+	public function songAction($id, $slug)
 	{
-	$song = $this->getDoctrine()
-        ->getRepository('AppBundle:song')
-        ->find($id);
+    //seperate slug table or just another column in song? 
+    $song = null;
+    
+    if($slug) {
+      $song = $this->getDoctrine()
+            ->getRepository('AppBundle:song')
+            ->findOneBy(array('slug'=>$slug));
+      if($song == null) return new response($slug);
+      $id = $song->getId();
+    }
+    else {
+      $song = $this->getDoctrine()
+            ->getRepository('AppBundle:song')
+            ->find($id);
+    }
+    
+    // return new response(print_r($song));
+	
 	$tracks = $this->getDoctrine()
         ->getRepository('AppBundle:track')
         ->findBysongid($id);
@@ -161,9 +177,11 @@ class DefaultController extends Controller
         $em->remove($song);
       }
     }
+    $em->flush();
     
     $newSong = new song();
     $newSong->setUserid(0);
+    $newSong->setSlug("HideAndSeek");
     $newSong->setSongtitle("Hide and Seek (demo)");  
       $em->persist($newSong);
       $em->flush();
@@ -200,6 +218,7 @@ class DefaultController extends Controller
     
     $newSong2 = new song();
     $newSong2->setUserid(0);
+    $newSong2->setSlug("hallelujah");
     $newSong2->setSongtitle("Hallelujah (demo)");  
       $em->persist($newSong2);
       $em->flush();

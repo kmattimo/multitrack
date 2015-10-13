@@ -28,7 +28,8 @@
     background: none !important;
 }
 
-.mute-checkbox:checked + label:before {
+.mute-checkbox:checked + label {
   // content:"NO";
   // border:none;
+  color: color("materialize-red", "base") !important;
 } 

@@ -35,6 +35,13 @@ class song
      */
     private $songtitle;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug",length=255, type="string", unique=true, nullable=true, options={ "default":null})
+     */
+    private $slug;
+
 
     /**
      * Get id
@@ -90,5 +97,28 @@ class song
     public function getSongtitle()
     {
         return $this->songtitle;
+    }
+    
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
