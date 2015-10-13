@@ -37,6 +37,7 @@ var Song = function(audioLoader) {
 	this.gainNodes = [];
 	this.panNodes = [];
 	this.seekTime = ko.observable();
+  this.duration = this.buffers[0].duration;
 	this.trackVolume = [];
 	this.muted = [];
 	this.pan = [];
@@ -97,7 +98,7 @@ for(var i=0; i<self.numTracks; i++) {
 	
 	setInterval(function() {   
 		self.seekTime(self.loader.ctx.currentTime);
-		if(self.seekTime >= self.playingTime() ) {
+		if( self.playingTime() > self.duration ) {
 				self.playing(false);
 		}
 	}, 500);
@@ -123,15 +124,6 @@ for(var i=0; i<self.numTracks; i++) {
 			this.playing(false);
 			}
 	};
-	
-	this.changeTrackVolume = function(volume, i) {
-		console.log("track volume" , volume, i);
-		//todo: eliminate hardcoded 100
-		// self.trackVolume[i] = volume
-		var fraction = parseInt(volume) / 100;
-		this.gainNodes[i].gain.value = (fraction * fraction) ;
-	};
-
 
 };
 
