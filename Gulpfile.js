@@ -12,7 +12,9 @@ gulp.task('sass', function() {
         .pipe(gulp.dest(output))
 });
 
-//Watch task
-gulp.task('default',function() {
+gulp.task('watch', function() {
     gulp.watch(watchFiles,['sass']);
 });
+
+//Watch task
+gulp.task('default', ['watch']);
