@@ -42,7 +42,7 @@ class DefaultController extends Controller
         ->getRepository('AppBundle:track')
         ->findBysongid($id);
 	return $this->render('default/song.html.twig',
-			array('song' => $song, 'tracks' => $tracks )
+			array('song' => $song, 'tracks' => $tracks, 'numTracks' => sizeof($tracks) )
 		);
 	}
 	
@@ -155,7 +155,12 @@ class DefaultController extends Controller
         $em->remove($song);
       }
     }
-    
+    $existingSongs = $repository->findBySongtitle("Hallelujah (demo)");
+    if($existingSongs) {
+      foreach ($existingSongs as $song ) {
+        $em->remove($song);
+      }
+    }
     
     $newSong = new song();
     $newSong->setUserid(0);
@@ -193,7 +198,38 @@ class DefaultController extends Controller
     $newTrack2->setTracktitle("Bass");
     $em->persist($newTrack2);
     
+    $newSong2 = new song();
+    $newSong2->setUserid(0);
+    $newSong2->setSongtitle("Hallelujah (demo)");  
+      $em->persist($newSong2);
       $em->flush();
+    $songid = $newSong2->getId();
+    
+    $newTrack2 = new track();
+    $newTrack2->setSongid($songid );
+    $newTrack2->setUrl("/example/beets/sop.mp3");
+    $newTrack2->setTracktitle("Soprano");
+    $em->persist($newTrack2);
+    
+    $newTrack2 = new track();
+    $newTrack2->setSongid($songid );
+    $newTrack2->setUrl("/example/beets/alto.mp3");
+    $newTrack2->setTracktitle("Alto");
+    $em->persist($newTrack2);
+    
+    $newTrack2 = new track();
+    $newTrack2->setSongid($songid );
+    $newTrack2->setUrl("/example/beets/tenor.mp3");
+    $newTrack2->setTracktitle("Tenor");
+    $em->persist($newTrack2);
+    
+    $newTrack2 = new track();
+    $newTrack2->setSongid($songid );
+    $newTrack2->setUrl("/example/beets/bass.mp3");
+    $newTrack2->setTracktitle("Bass");
+    $em->persist($newTrack2);  
+    
+    $em->flush();
     return new Response("ok");        
   }
 	
