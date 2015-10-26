@@ -186,11 +186,11 @@ class DefaultController extends Controller
       $em->persist($newSong);
       $em->flush();
     $songid = $newSong->getId();
-    $newTrack = new track();
-    $newTrack->setSongid($songid );
-    $newTrack->setUrl("/example/HaS/01-Piano.mp3");
-		$newTrack->setTracktitle("All Piano");
-		$em->persist($newTrack);
+    // $newTrack = new track();
+    // $newTrack->setSongid($songid );
+    // $newTrack->setUrl("/example/HaS/01-Piano.mp3");
+		// $newTrack->setTracktitle("All Piano");
+		// $em->persist($newTrack);
     
     $newTrack2 = new track();
     $newTrack2->setSongid($songid );
