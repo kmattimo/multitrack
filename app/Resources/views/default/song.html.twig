@@ -50,7 +50,7 @@
 				</button>
 						
 				Seek: <span data-bind="text:playingTime"></span>
-					<input disabled data-bind="enable: loaded, value:playingTime" onchange="song.play(value)" type="range" id="seekBar"/>	
+					<input disabled data-bind="enable: loaded, value:playingTime" onchange="song.play(value)" type="range" id="seekBar" value="0"/>	
 					
 			</li>
 				
@@ -58,17 +58,17 @@
 				<li class="collection-item">
 				{{track.tracktitle}} 	<a href="{{track.url}}">dl</a>
 				<br>
-				<div>
+				<div class="valign-wrapper">
 						<!-- <i class="material-icons" data-bind="text: muted[0]()? 'volume_mute':'volume_off', toggleClick: muted[0] "></i> -->
 					<input type="checkbox" data-bind="checked: muted[{{loop.index0}}]" class="mute-checkbox filled-in" id="track{{loop.index0}}mute" />
       		<label for="track{{loop.index0}}mute">
-						<i class="material-icons" data-bind="text: muted[{{loop.index0}}]()? 'volume_up':'volume_off'"></i>
+						<i class="material-icons valign" data-bind="text: muted[{{loop.index0}}]()? 'volume_up':'volume_off'">volume_off</i>
 					</label>
 				
 					<div class="volume-group">
 						<!-- <i class="material-icons">volume_up</i> -->
-						<span data-bind="text: trackVolume[{{loop.index0}}]"></span>
-						<input disabled data-bind="enable: loaded, value:  trackVolume[{{loop.index0}}]" class="volume-slider" type="range" min="0" max="75" value="75" />
+						<span data-bind="text: trackVolume[{{loop.index0}}]">75</span>
+						<input disabled data-bind="enable: loaded, value:  trackVolume[{{loop.index0}}]" class="volume-slider" type="range" min="0" max="100" value="75" />
 					
 					</div>
 					

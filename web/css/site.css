@@ -7824,13 +7824,17 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   max-width: 150px; }
 
 .pan-slider {
-  max-width: 100px; }
+  max-width: 150px; }
 
 .volume-group {
-  display: inline; }
+  display: inline-block;
+  min-width: 180px;
+  margin-left: 10px; }
 
 .pan-group {
-  display: inline; }
+  display: inline-block;
+  min-width: 180px;
+  margin-left: 10px; }
 
 .mute-checkbox + label {
   padding-left: 0 !important; }

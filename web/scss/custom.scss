@@ -1,22 +1,33 @@
 
+
+
 .hero {
     text-align: center;
     min-height: 100px;
 }
 
+$volume-slider-width:150px;
+$slider-margin:30px;
+
 .volume-slider {
-    max-width:150px;
+    max-width: $volume-slider-width;
 }
+
+$pan-slider-width:150px;
 .pan-slider {
-    max-width:100px;
+    max-width: $pan-slider-width;
 }
 
 
 .volume-group {
-  display:inline;
+  display:inline-block;
+  min-width: $slider-margin + $volume-slider-width;
+  margin-left:10px;
 }
 .pan-group {
-  display: inline;
+  display: inline-block;
+  min-width: $slider-margin + $pan-slider-width;
+  margin-left: 10px;
 }
 
 .mute-checkbox + label{
