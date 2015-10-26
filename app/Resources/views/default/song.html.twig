@@ -48,10 +48,17 @@
 				<button class="waves-effect waves-light btn" disabled data-bind="enable: loaded && playing" onclick="song.stop()">
 					<i class="material-icons">stop</i>
 				</button>
-						
-				Seek: <span data-bind="text:playingTime"></span>
-					<input disabled data-bind="enable: loaded, value:playingTime" onchange="song.play(value)" type="range" id="seekBar" value="0"/>	
-					
+				
+				<br>
+				<div class= "seek-group">
+					<div class="seek-info">
+						Seek: <span data-bind="text:playingTime">0</span>s
+					</div>
+					<div class="seekbar-wrapper">
+						<input class="seekbar" disabled data-bind="enable: loaded, value:playingTime" onchange="song.play(value)" type="range" id="seekBar" value="0"/>	
+					</div>
+				</div>
+				
 			</li>
 				
 			{%for track in tracks%}

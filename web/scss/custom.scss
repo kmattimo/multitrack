@@ -18,17 +18,37 @@ $pan-slider-width:150px;
     max-width: $pan-slider-width;
 }
 
-
-.volume-group {
+.group {
   display:inline-block;
+}
+
+.seekbar-wrapper {
+  overflow: hidden;
+  padding-left: 10px;
+}
+.seekbar {
+  width:100%;
+}
+.seek-info {
+  line-height: 35px;
+  float:left;
+}
+
+.seek-group {
+  // @extend .group;
+  padding-left:10px;
+}
+.volume-group {
+  @extend .group;
   min-width: $slider-margin + $volume-slider-width;
   margin-left:10px;
 }
 .pan-group {
-  display: inline-block;
+  @extend .group;
   min-width: $slider-margin + $pan-slider-width;
   margin-left: 10px;
 }
+
 
 .mute-checkbox + label{
   padding-left:0 !important;
