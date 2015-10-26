@@ -41,7 +41,7 @@
 		<ul class="collection with-header">
 			<li class="collection-header grey lighten-4">
 				
-				<button class= "waves-effect waves-light btn" disabled data-bind="enable: loaded" id="play" type="button" onclick="song.play()">
+				<button class= "waves-effect waves-light btn" disabled data-bind="enable: loaded, click: function(){song.playPause()}" id="play" type="button">
 					<i class="material-icons">play_arrow</i>
 				</button>
 								

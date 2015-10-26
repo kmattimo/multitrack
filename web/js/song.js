@@ -97,6 +97,13 @@ for(var i=0; i<self.numTracks; i++) {
 	console.log("initialized buffers");
 	};
 	
+  this.playPause = function() {
+    console.log(self.playingTime());
+  };
+  this.clickMe = function(data,event) {
+    console.log('!!!!!');
+  };
+  
 	setInterval(function() {   
 		self.seekTime(self.loader.ctx.currentTime);
 		if( self.playingTime() > self.duration ) {
@@ -117,15 +124,16 @@ for(var i=0; i<self.numTracks; i++) {
 		//this.playing = true;
 		this.playing(true);
 	};
-	
+
 	this.stop = function () {
 		if(this.playing() == true)
 			{
 			this.sources.forEach(function(thisSource) { thisSource.stop() } ) ;
 			this.playing(false);
+      self.seekTime(0);
 			}
 	};
-  //so stuff works before the first play
+  //so stuff works before the first play press
   this.initBuffers();
 };
 
