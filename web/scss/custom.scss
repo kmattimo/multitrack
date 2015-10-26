@@ -33,7 +33,10 @@ $pan-slider-width:150px;
   line-height: 35px;
   float:left;
 }
-
+.seek-text-center {
+  position:absolute;
+    margin-top:-10px;
+}
 .seek-group {
   // @extend .group;
   padding-left:10px;

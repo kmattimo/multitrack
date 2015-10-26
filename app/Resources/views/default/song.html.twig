@@ -25,7 +25,7 @@
 		<h2 class="center"> {{song.songtitle}} </h2>
 		
 		<div class="song-loading" data-bind="visible:!loaded" >
-			<div class="card teal darken-3 ">
+			<div class="card blue ">
 				<div class="card-content center">
 					<span class="card-title">Loading {{numTracks}} tracks...</span>
 					<p> 
@@ -39,7 +39,7 @@
 		</div>
 		
 		<ul class="collection with-header">
-			<li class="collection-header">
+			<li class="collection-header grey lighten-4">
 				
 				<button class= "waves-effect waves-light btn" disabled data-bind="enable: loaded" id="play" type="button" onclick="song.play()">
 					<i class="material-icons">play_arrow</i>
@@ -51,12 +51,14 @@
 				
 				<br>
 				<div class= "seek-group">
-					<div class="seek-info">
+					<!-- <div class="seek-info">
 						Seek: <span data-bind="text:playingTime">0</span>s
-					</div>
-					<div class="seekbar-wrapper">
-						<input class="seekbar" disabled data-bind="enable: loaded, value:playingTime" onchange="song.play(value)" type="range" id="seekBar" value="0"/>	
-					</div>
+					</div> -->
+					<!-- <div class="seekbar-wrapper"> -->
+						<input class="" disabled data-bind="enable: loaded, value:playingTime" onchange="song.play(value)" type="range" id="seekBar" value="0"/>	
+					<!-- </div> -->
+						<!-- <span class="seek-text-center"><em>seek: 0s</em></span> -->
+						Seek: <span data-bind="text:playingTime">0</span>s
 				</div>
 				
 			</li>

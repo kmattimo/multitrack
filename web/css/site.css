@@ -7840,6 +7840,10 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   line-height: 35px;
   float: left; }
 
+.seek-text-center {
+  position: absolute;
+  margin-top: -10px; }
+
 .seek-group {
   padding-left: 10px; }
 

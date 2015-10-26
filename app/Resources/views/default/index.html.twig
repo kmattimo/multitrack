@@ -5,7 +5,7 @@
 	
   <div class="col s12 l6">
     <br>
-    <div class="card yellow black-text darken-1">
+    <div class="card yellow black-text darken-1 center">
       <div class="card-content">
         <span class="card-title black-text"> Multitrack is a web-based practice tool. </span>
         <p>
@@ -25,11 +25,11 @@
   
   <div class="col s12 offset-m3 m6 center-align">
     <ul class="collection with-header center">
-      <li class="collection-header"><h4>Songs</h4></li>
+      <li class="collection-header blue white-text"><h4>Songs</h4></li>
     	{%for song in songs %}
-    		 <li class="collection-item">
-           <a href="/songID/{{song.id}}">{{song.songtitle}} </a>
-         </li>
+        <a class="hoverable collection-item grey lighten-3" href="/songID/{{song.id}}">          
+          {{song.songtitle}}
+        </a>
     	{%endfor%}
     </ul>    
   </div>
