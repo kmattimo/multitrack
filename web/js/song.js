@@ -43,7 +43,7 @@ var Song = function(audioLoader) {
 	this.pan = [];
 	
 	for(var i=0; i<self.numTracks; i++) {
-		this.trackVolume.push(ko.observable(100));
+		this.trackVolume.push(ko.observable(75));
 		this.muted.push( ko.observable(false) );
 		this.pan.push( ko.observable(0) );
 	}
@@ -125,7 +125,8 @@ for(var i=0; i<self.numTracks; i++) {
 			this.playing(false);
 			}
 	};
-
+  //so stuff works before the first play
+  this.initBuffers();
 };
 
 $(document).ready(function() {
