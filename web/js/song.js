@@ -83,6 +83,7 @@ for(var i=0; i<self.numTracks; i++) {
 	this.loaded(true);
 	
 	this.initBuffers = function() {
+    //this stuff is fast enough to do every play
 		for(var i=0; i<this.loader.response.length; i++) {
 			this.gainNodes[i] = this.loader.ctx.createGain();
 			this.sources[i] =  this.loader.ctx.createBufferSource();
