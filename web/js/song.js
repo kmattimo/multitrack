@@ -142,8 +142,6 @@ for(var i=0; i<self.numTracks; i++) {
   this.initBuffers();
 };
 
-$(document).ready(function() {
+// $(document).ready(function() {
 	var audioLoader = new loaderWrapper(window.URLs);
-	
-	
-});
+// });
