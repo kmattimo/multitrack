@@ -42,7 +42,7 @@
 			<li class="collection-header grey lighten-4">
 				
 				<button class= "waves-effect waves-light btn" disabled data-bind="enable: loaded, click: function(){song.playPause()}" id="play" type="button">
-					<i class="material-icons">play_arrow</i>
+					<i class="material-icons" data-bind="text: playing() ? 'paused' : 'play_arrow' ">loop</i>
 				</button>
 								
 				<button class="waves-effect waves-light btn" disabled data-bind="enable: loaded && playing" onclick="song.stop()">

@@ -37,6 +37,8 @@ var Song = function(audioLoader) {
 	this.gainNodes = [];
 	this.panNodes = [];
 	this.seekTime = ko.observable();
+  //paused when truthy, also time to resume
+  this.pausedTime = ko.observable(0);
   this.duration = this.buffers[0].duration;
 	this.trackVolume = [];
 	this.muted = [];
@@ -49,6 +51,7 @@ var Song = function(audioLoader) {
 	}
 	this.getCurrentTime = function() { return self.loader.ctx.currentTime; };
 	this.playingTime = ko.computed(function() {
+    if(self.pausedTime()) return self.pausedTime();
 		if(!self.playing()) return 0;
 		return (self.seekTime() - self.startTime );
 	});
@@ -98,10 +101,17 @@ for(var i=0; i<self.numTracks; i++) {
 	};
 	
   this.playPause = function() {
-    console.log(self.playingTime());
-  };
-  this.clickMe = function(data,event) {
-    console.log('!!!!!');
+    if(self.playing()) {
+      console.log(self.playingTime());
+      //lets update the paused time in a stupid way
+      self.seekTime(self.loader.ctx.currentTime);
+      self.pausedTime( self.playingTime() );
+      self.stop(true);
+    }
+    else {
+      var newTime = self.pausedTime()? self.pausedTime() : 0 ; 
+      self.play(newTime);
+    }
   };
   
 	setInterval(function() {   
@@ -112,8 +122,11 @@ for(var i=0; i<self.numTracks; i++) {
 	}, 500);
 		
 	this.play = function (time) {
+    self.pausedTime(0);
 		if(this.playing() == true) {
 				this.stop();
+        //seekbar causes this
+        // console.error('should that play have happened?');
 			}
 		this.initBuffers();
 		if(time == null) {
@@ -125,12 +138,14 @@ for(var i=0; i<self.numTracks; i++) {
 		this.playing(true);
 	};
 
-	this.stop = function () {
+	this.stop = function (pause) {
 		if(this.playing() == true)
 			{
 			this.sources.forEach(function(thisSource) { thisSource.stop() } ) ;
 			this.playing(false);
-      self.seekTime(0);
+      if(!pause) {
+        self.seekTime(0);
+      }
 			}
 	};
   //so stuff works before the first play press
