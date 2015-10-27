@@ -7816,10 +7816,6 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   .picker--time .picker__box {
     margin-bottom: 5em; } }
 
-.hero {
-  text-align: center;
-  min-height: 100px; }
-
 .volume-slider {
   max-width: 150px; }
 

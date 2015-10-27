@@ -1,14 +1,7 @@
 
 
-
-.hero {
-    text-align: center;
-    min-height: 100px;
-}
-
 $volume-slider-width:150px;
 $slider-margin:40px;
-
 .volume-slider {
     max-width: $volume-slider-width;
 }
@@ -39,7 +32,6 @@ $pan-slider-margin:100px;
     margin-top:-10px;
 }
 .seek-group {
-  // @extend .group;
   padding-left:10px;
 }
 .volume-group {

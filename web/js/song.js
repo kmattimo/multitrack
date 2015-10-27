@@ -1,13 +1,3 @@
-ko.bindingHandlers.toggleClick = {
-    init: function (element, valueAccessor) {
-        var value = valueAccessor();
-
-        ko.utils.registerEventHandler(element, "click", function () {
-            value(!value());
-        });
-    }
-};
-
 var loaderWrapper = function (URLs) {
 
 	this.loader = new AudioSampleLoader();
@@ -76,7 +66,8 @@ var Song = function(audioLoader) {
 		}
 	}
 	
-	$("#seekBar").attr("max",this.buffers[0].duration);
+  document.getElementById("seekBar").setAttribute("max", this.buffers[0].duration);
+  
 	ko.applyBindings(this);
 	
 for(var i=0; i<self.numTracks; i++) {
@@ -120,14 +111,13 @@ for(var i=0; i<self.numTracks; i++) {
 		if( self.playingTime() > self.duration ) {
 				self.playing(false);
 		}
-	}, 500);
+	}, 250);
 		
 	this.play = function (time) {
     self.pausedTime(0);
-		if(this.playing() == true) {
-				this.stop();
-        //seekbar causes this
-        // console.error('should that play have happened?');
+		if(this.playing()) {
+        //case caused by seeking while playing
+				this.stop(true);
 			}
 		this.initBuffers();
 		if(time == null) {
@@ -135,12 +125,11 @@ for(var i=0; i<self.numTracks; i++) {
 		}
 		this.startTime = self.getCurrentTime() - time;
 		this.sources.forEach(function(thisSource) { thisSource.start(0, time)} ) ;
-		//this.playing = true;
 		this.playing(true);
 	};
 
 	this.stop = function (pause) {
-		if(this.playing() == true)
+		if(this.playing())
 			{
 			this.sources.forEach(function(thisSource) { thisSource.stop() } ) ;
 			this.playing(false);
