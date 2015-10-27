@@ -55,6 +55,9 @@ var Song = function(audioLoader) {
 		if(!self.playing()) return 0;
 		return (self.seekTime() - self.startTime );
 	});
+  this.playingTimeRounded = ko.computed(function() {
+    return Math.floor(self.playingTime());
+  });
 	this.setGain = function(index) {
 		if(self.muted[index]()) {
 			this.gainNodes[index].gain.value = 0;
@@ -70,9 +73,7 @@ var Song = function(audioLoader) {
 		console.log("change detected");
 		for(var i=0;i<self.numTracks;i++) {
 				self.setGain(i);
-				
 		}
-		
 	}
 	
 	$("#seekBar").attr("max",this.buffers[0].duration);

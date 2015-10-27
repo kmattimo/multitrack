@@ -7,13 +7,14 @@
 }
 
 $volume-slider-width:150px;
-$slider-margin:30px;
+$slider-margin:40px;
 
 .volume-slider {
     max-width: $volume-slider-width;
 }
 
 $pan-slider-width:150px;
+$pan-slider-margin:100px;
 .pan-slider {
     max-width: $pan-slider-width;
 }
@@ -48,7 +49,7 @@ $pan-slider-width:150px;
 }
 .pan-group {
   @extend .group;
-  min-width: $slider-margin + $pan-slider-width;
+  min-width: $pan-slider-margin + $pan-slider-width;
   margin-left: 10px;
 }
 

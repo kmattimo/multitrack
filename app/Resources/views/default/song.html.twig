@@ -42,7 +42,7 @@
 			<li class="collection-header grey lighten-4">
 				
 				<button class= "waves-effect waves-light btn" disabled data-bind="enable: loaded, click: function(){song.playPause()}" id="play" type="button">
-					<i class="material-icons" data-bind="text: playing() ? 'paused' : 'play_arrow' ">loop</i>
+					<i class="material-icons" data-bind="text: playing() ? 'pause' : 'play_arrow' ">loop</i>
 				</button>
 								
 				<button class="waves-effect waves-light btn" disabled data-bind="enable: loaded && playing" onclick="song.stop()">
@@ -58,7 +58,7 @@
 						<input class="" disabled data-bind="enable: loaded, value:playingTime" onchange="song.play(value)" type="range" id="seekBar" value="0"/>	
 					<!-- </div> -->
 						<!-- <span class="seek-text-center"><em>seek: 0s</em></span> -->
-						Seek: <span data-bind="text:playingTime">0</span>s
+						Seek: <span data-bind="text:playingTimeRounded">0</span>s
 				</div>
 				
 			</li>
@@ -81,10 +81,13 @@
 					
 					</div>
 					
-					<div class="pan-group">
-						L
-						<input disabled data-bind="enable: loaded, value:  pan[{{loop.index0}}]" class="pan-slider" type="range" step=".01" min="-1" max="1" value="0" />
-						R
+					<div class="pan-group valign-wrapper">
+							L
+							<input disabled data-bind="enable: loaded, value:  pan[{{loop.index0}}]" class="pan-slider" type="range" step=".01" min="-1" max="1" value="0" />
+							R
+							<span data-bind="visible:pan[{{loop.index0}}], click:function(){pan[{{loop.index0}}](0)}">
+								<a href="#">reset</a>
+							</span>
 					</div>
 				</div>
 				</li>

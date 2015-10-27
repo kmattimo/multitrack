@@ -7848,11 +7848,11 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   padding-left: 10px; }
 
 .volume-group {
-  min-width: 180px;
+  min-width: 190px;
   margin-left: 10px; }
 
 .pan-group {
-  min-width: 180px;
+  min-width: 250px;
   margin-left: 10px; }
 
 .mute-checkbox + label {
