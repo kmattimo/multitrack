@@ -79,41 +79,25 @@ class DefaultController extends Controller
      */
 	public function saveSongAction()
 	{
-	//must wait until all files uploaded? 
-	//can we assume this since songs are added on complete? 
-	//it should work for benevolent users.... 
 	$songObject = json_decode($_POST['json']);
 //---transaction	
 	//insert new song: [userid] songtitle
 	$newSong = new song();
 	$newSong->setUserid(0);
 	$newSong->setSongtitle($songObject->songTitle);
-	//var_dump($songObject);
-	    $em = $this->getDoctrine()->getManager();
+	  $em = $this->getDoctrine()->getManager();
 		$em->persist($newSong);
 		$em->flush();
 	$userID = $newSong->getUserid();
-
-	//create ID+timestamp folder
-	//todo: place for global strings in php? 
-	//todo: song or user id? 
-	//todo: change to directory separator
-	$dirname = "upload/" . date("Y-m-d H.i.s") ."-". $userID ; 
-	mkdir($dirname);
-	
 	//foeach track in song.... 
 	foreach($songObject->queue as $key => $curTrack)
 		{
-		//check if file exists?
-		//echo $curTrack->url;
-		//move file
-		$finalTrackURL = $dirname . "/". $key . $curTrack->url;
-		rename("upload/temp/" . $curTrack->url , $finalTrackURL);
-		//prepend folder to url 
+    //according to symfony/twig xss escaping is on by default?
+		$finalTrackURL = $curTrack->url;
 		//insert new track: songid url tracktitle
 		$newTrack = new track();
 		$newTrack->setSongid( $newSong->getId());
-		$newTrack->setUrl("/".$finalTrackURL);
+		$newTrack->setUrl($finalTrackURL);
 		$newTrack->setTracktitle($curTrack->name);
 		$em->persist($newTrack);
 		$em->flush();
