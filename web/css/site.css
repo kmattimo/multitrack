@@ -7816,40 +7816,42 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   .picker--time .picker__box {
     margin-bottom: 5em; } }
 
-.volume-slider {
-  max-width: 150px; }
-
-.pan-slider {
-  max-width: 150px; }
-
 .group, .volume-group, .pan-group {
   display: inline-block; }
-
-.seekbar-wrapper {
-  overflow: hidden;
-  padding-left: 10px; }
-
-.seekbar {
-  width: 100%; }
-
-.seek-info {
-  line-height: 35px;
-  float: left; }
 
 .seek-text-center {
   position: absolute;
   margin-top: -10px; }
 
-.seek-group {
-  padding-left: 10px; }
+@media only screen and (max-width: 600px) {
+  .less-left-padding {
+    padding-left: 20px !important; } }
+
+.volume-slider {
+  max-width: 80%; }
+  @media only screen and (min-width: 601px) {
+    .volume-slider {
+      max-width: 150px; } }
 
 .volume-group {
-  min-width: 190px;
-  margin-left: 10px; }
+  min-width: 50%; }
+  @media only screen and (min-width: 601px) {
+    .volume-group {
+      min-width: 190px;
+      margin-left: 10px; } }
+
+.pan-slider {
+  max-width: 70%; }
+  @media only screen and (min-width: 601px) {
+    .pan-slider {
+      max-width: 150px; } }
 
 .pan-group {
-  min-width: 250px;
-  margin-left: 10px; }
+  min-width: 40%; }
+  @media only screen and (min-width: 601px) {
+    .pan-group {
+      min-width: 250px;
+      margin-left: 10px; } }
 
 .mute-checkbox + label {
   padding-left: 0 !important; }
