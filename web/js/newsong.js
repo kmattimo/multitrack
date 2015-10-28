@@ -1,37 +1,47 @@
-Dropzone.options.myDropzone = {
-  //autoProcessQueue: false,
-  addRemoveLinks: true,
+// Dropzone.options.myDropzone = {
+//   //autoProcessQueue: false,
+//   addRemoveLinks: true,
+// 
+//   init: function() {
+//   	myDropzone = this; // closure
+// 	//var submitButton = document.querySelector("#submit-all")
+// 	//submitButton.addEventListener("click", function() { myDropzone.processQueue(); });
+// 	this.on("queuecomplete", function() { /*alert("Fuck yeah");*/	});
+// 	
+// 	this.on("success", function() {
+// 	  newTrack = new track(arguments[0].name, arguments[0].name);
+// 	  newSong.queue.push(newTrack);
+// 	  console.log("pushed track");
+// 	});
+// 	//TODO: Remove from array on remove
+// 	//TODO: dupe file names
+//   }
+// };
 
-  init: function() {
-  	myDropzone = this; // closure
-	//var submitButton = document.querySelector("#submit-all")
-	//submitButton.addEventListener("click", function() { myDropzone.processQueue(); });
-	this.on("queuecomplete", function() { /*alert("Fuck yeah");*/	});
-	
-	this.on("success", function() {
-	  newTrack = new track(arguments[0].name, arguments[0].name);
-	  newSong.queue.push(newTrack);
-	  console.log("pushed track");
-	});
-	//TODO: Remove from array on remove
-	//TODO: dupe file names
-  }
+	//todo: can remove window?
+	var NewSong = function() {
+		var self = this;
+		self.songTitle = ko.observable('My song');
+		self.queue= ko.observableArray();
+    self.addTrack = function() {
+      console.log('hey');
+      var trackName = 'Track ' + (self.queue().length +1);
+      self.queue.push(ko.observable({name:trackName, url:""}));
+    };
+		self.isValid = ko.computed(function() {
+			for(var i=0; i<self.queue().length; i++) {
+				if(!self.queue()[i]().name.trim()) return false;
+				if(!self.queue()[i]().url.trim()) return false;
+				console.log( self.queue()[i]().name );
+			}
+			return true;
+		});
+  //add the first blank track
+  self.addTrack();
+    
+	ko.applyBindings(this);
 };
 
-$(document).ready(function() {
-	//todo: can remove window?
-	window.newSong = new Object();
-		newSong.songTitle = ko.observable('My song');
-		newSong.queue= ko.observableArray();
-	
-	document.querySelector("#saveSong").addEventListener("click", saveSong);
-	ko.applyBindings(newSong);
-});
-
-function track(url, name) {
-		this.url = url;
-		this.name = name;
-}
 
 function saveSong() {
 	$.ajax({
@@ -49,3 +59,10 @@ function saveSong() {
 		console.log(data);
 	});
 }
+
+
+$(document).ready(function() {
+	newSong = new NewSong();
+	document.querySelector("#saveSong").addEventListener("click", saveSong);
+
+});

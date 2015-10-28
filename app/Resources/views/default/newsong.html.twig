@@ -2,22 +2,46 @@
 
 {% block body %}
 
-<link rel="stylesheet" type="text/css" href="/css/dropzone.css">
+<!-- <link rel="stylesheet" type="text/css" href="/css/dropzone.css"> -->
 <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="/js/dropzone.js"></script>
+<!-- <script src="/js/dropzone.js"></script> -->
 <script src="/js/newsong.js"></script>
 
-New Song <br> 
-<input type="text" data-bind='value:songTitle, valueUpdate: "afterkeydown"' />
 
-<form action="/upload" class="dropzone" id="my-dropzone"> </form>
+<div class="row"> 
+	<div class="col s12">
+		<h2 class="center"> Create New Song </h2>
+			<h5> Song Title:</h5>
+			<input class="song-title-input" type="text" data-bind='value:songTitle, valueUpdate: "afterkeydown"' />
 
-<br><br>
-<button data-bind='enable: queue().length>0' id="saveSong">Save Song</button>
+      <table class="striped">
+        <thead>
+          <tr>
+              <th data-field="id">Track Title</th>
+              <th data-field="name">URL</th>
+          </tr>
+        </thead>
+        <tbody data-bind='foreach:queue'>
+          <tr>
+            <td>     
+	          		<input data-bind="value: name" placeholder="Track Title"type="text">
+						</td>
+						<td>     
+	          		<input data-bind="value: url" placeholder="URL"type="text">
+						</td>
+          </tr>
+				</tbody>
+			</table>
 
-<p data-bind='foreach:queue'>
-<input data-bind="value: name"/> <br>
-</p>
+			<br><br>
+			
+			<button class="waves-effect waves-light btn" data-bind='click:addTrack'>Add</button> 
+	
+			<button class="waves-effect waves-light btn" data-bind='enable: isValid' id="saveSong">Save Song</button>
 
+			
+
+	</div>
+</div>
 		
 {% endblock %}
