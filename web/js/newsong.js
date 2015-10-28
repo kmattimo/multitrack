@@ -26,18 +26,25 @@
     self.addTrack = function() {
       console.log('hey');
       var trackName = 'Track ' + (self.queue().length +1);
-      self.queue.push(ko.observable({name:trackName, url:""}));
+      self.queue.push({name:ko.observable(trackName), url:ko.observable("")});
     };
+		self.removeTrack = function() { 
+			self.queue.remove(this);
+		};
+		
+		self.addTrack();
+		
 		self.isValid = ko.computed(function() {
+			if(self.queue().length <= 0) return false;
 			for(var i=0; i<self.queue().length; i++) {
-				if(!self.queue()[i]().name.trim()) return false;
-				if(!self.queue()[i]().url.trim()) return false;
-				console.log( self.queue()[i]().name );
+				if(!self.songTitle().trim()) return false;
+				if(!self.queue()[i].name().trim()) return false;
+				if(!self.queue()[i].url().trim()) return false;
 			}
 			return true;
 		});
   //add the first blank track
-  self.addTrack();
+  
     
 	ko.applyBindings(this);
 };
@@ -52,7 +59,7 @@ function saveSong() {
 	})	
 	.done( function( data ) {
 		console.log('ajax success ' + data);
-		window.location.href = '/song/'+ data;
+		window.location.href = '/songID/'+ data;
 	})
 	.fail( function( data ) {
 		console.log('ajax fail');
