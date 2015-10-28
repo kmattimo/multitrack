@@ -64,7 +64,7 @@
 			</li>
 				
 			{%for track in tracks%}
-				<li class="collection-item less-left-padding">
+				<li class="collection-item less-left-padding less-mobile-padding">
 				{{track.tracktitle}} 	<a href="{{track.url}}">dl</a>
 				<br>
 				<div class="valign-wrapper">
@@ -86,7 +86,7 @@
 							<input disabled data-bind="enable: loaded, value:  pan[{{loop.index0}}]" class="pan-slider" type="range" step=".01" min="-1" max="1" value="0" />
 							R
 							<span style="display:none"  data-bind="visible:pan[{{loop.index0}}], click:function(){pan[{{loop.index0}}](0)}">
-								<a href="#">reset</a>
+								<a title="reset pan" href="#"><i class=" valignsmall material-icons">settings_remote</i></a>
 							</span>
 					</div>
 				</div>

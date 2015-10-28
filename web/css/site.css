@@ -7824,8 +7824,9 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   margin-top: -10px; }
 
 @media only screen and (max-width: 600px) {
-  .less-left-padding {
-    padding-left: 20px !important; } }
+  .less-mobile-padding {
+    padding-left: 5px !important;
+    padding-right: 5px !important; } }
 
 .volume-slider {
   max-width: 80%; }
@@ -7841,7 +7842,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
       margin-left: 10px; } }
 
 .pan-slider {
-  max-width: 70%; }
+  max-width: 60%; }
   @media only screen and (min-width: 601px) {
     .pan-slider {
       max-width: 150px; } }
