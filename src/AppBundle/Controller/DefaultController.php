@@ -43,7 +43,9 @@ class DefaultController extends Controller
       $song = $this->getDoctrine()
             ->getRepository('AppBundle:song')
             ->findOneBy(array('slug'=>$slug));
-      if($song == null) return new response($slug);
+      if($song == null) {
+        throw $this->createNotFoundException('The song ' .$slug . ' does not exist.');  
+      }
       $id = $song->getId();
     }
     else {
@@ -51,7 +53,9 @@ class DefaultController extends Controller
             ->getRepository('AppBundle:song')
             ->find($id);
     }
-    
+    if($song == null) {
+      throw $this->createNotFoundException('The song id ' .$id . ' does not exist.');  
+    }
     // return new response(print_r($song));
 	
 	$tracks = $this->getDoctrine()
