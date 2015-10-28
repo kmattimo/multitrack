@@ -19,25 +19,35 @@
           <tr>
               <th data-field="id">Track Title</th>
               <th data-field="name">URL</th>
+							<th data-field="no">Delete</th>
           </tr>
         </thead>
         <tbody data-bind='foreach:queue'>
           <tr>
             <td>     
-	          		<input data-bind="value: name" placeholder="Track Title"type="text">
+	          		<input data-bind="value: name, valueUpdate: 'afterkeydown'" placeholder="Track Title"type="text">
 						</td>
 						<td>     
-	          		<input data-bind="value: url" placeholder="URL"type="text">
+	          		<input data-bind="value: url, valueUpdate: 'afterkeydown'" placeholder="URL"type="text">
 						</td>
+						<td> 
+							<a href="#" data-bind="click: $parent.removeTrack"> <i class="material-icons">delete</i></a>
+
+						</td>
+						
           </tr>
 				</tbody>
 			</table>
 
 			<br><br>
 			
-			<button class="waves-effect waves-light btn" data-bind='click:addTrack'>Add</button> 
+			<button title="Add Track" class="waves-effect waves-light btn" data-bind='click:addTrack'>
+				<i class="material-icons">playlist_add</i> Add Track
+			</button> 
 	
-			<button class="waves-effect waves-light btn" data-bind='enable: isValid' id="saveSong">Save Song</button>
+			<button title="Save Song" class="waves-effect waves-light btn" data-bind='enable: isValid()' id="saveSong">
+				<i class="material-icons">done</i> Save
+			</button>
 
 			
 
