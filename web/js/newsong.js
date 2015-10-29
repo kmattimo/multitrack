@@ -43,8 +43,24 @@
 			}
 			return true;
 		});
+		self.addURL = function(index, url) {
+			self.queue()[index](url);
+		}
   //add the first blank track
-  
+  	self.dropbox = function(index) {
+			console.log('Im doing dropbox stuff now');
+			console.log(index);
+			var options = {
+					success: function(files) {
+        	console.log("Here's the file link: " + files[0].link);
+					self.queue()[index].url(files[0].link);
+    			},
+					linkType: "direct",
+					multiselect: false,
+			};
+			Dropbox.choose(options);
+			
+		}
     
 	ko.applyBindings(this);
 };
