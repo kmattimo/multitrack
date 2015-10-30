@@ -23,6 +23,7 @@
 		var self = this;
 		self.songTitle = ko.observable('My song');
 		self.queue= ko.observableArray();
+		self.submitInProgress = ko.observable(false);
     self.addTrack = function() {
       console.log('hey');
       var trackName = 'Track ' + (self.queue().length +1);
@@ -35,6 +36,7 @@
 		self.addTrack();
 		
 		self.isValid = ko.computed(function() {
+			if(self.submitInProgress()) return false;
 			if(self.queue().length <= 0) return false;
 			for(var i=0; i<self.queue().length; i++) {
 				if(!self.songTitle().trim()) return false;
@@ -66,6 +68,7 @@
 
 
 function saveSong() {
+	newSong.submitInProgress(true);
 	$.ajax({
 		type: 'POST',
 		url: 'savesong',
@@ -77,6 +80,7 @@ function saveSong() {
 		window.location.href = '/songID/'+ data;
 	})
 	.fail( function( data ) {
+		newSong.submitInProgress(false);
 		console.log('ajax fail');
 		console.log(data);
 	});
