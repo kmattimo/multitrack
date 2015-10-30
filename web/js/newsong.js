@@ -51,6 +51,7 @@
 			//changing ?dl=0 to dl=1
 			//lets hope dropbox doesn't change this convention
 			url = url.substring(0, url.length-1) + 1;
+			url = url.replace('https://www.dropbox.com', 'https://dl.dropbox.com');
 			console.log(url);
 			self.addURL(index,url);
 		};
