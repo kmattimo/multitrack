@@ -45,19 +45,28 @@
 			}
 			return true;
 		});
+		self.addDropboxURL = function(index, url) {
+			//heh lets modify the preview URL instead of going direct
+			//this is to avoid the 4hr expiration of direct links
+			//changing ?dl=0 to dl=1
+			//lets hope dropbox doesn't change this convention
+			url = url.substring(0, url.length-1) + 1;
+			console.log(url);
+			self.addURL(index,url);
+		};
 		self.addURL = function(index, url) {
-			self.queue()[index](url);
-		}
+			self.queue()[index].url(url);
+		};
   //add the first blank track
   	self.dropbox = function(index) {
 			console.log('Im doing dropbox stuff now');
 			console.log(index);
 			var options = {
 					success: function(files) {
-        	console.log("Here's the file link: " + files[0].link);
-					self.queue()[index].url(files[0].link);
+        	console.log("Here's the original link: " + files[0].link);
+					self.addDropboxURL(index, files[0].link);
     			},
-					linkType: "direct",
+					linkType: "preview",
 					multiselect: false,
 			};
 			Dropbox.choose(options);
