@@ -23,7 +23,7 @@
           <tr>
               <th data-field="id">Track Title</th>
               <th data-field="name">URL</th>
-							<th data-field="no">Delete</th>
+							<th data-field="no">Actions</th>
           </tr>
         </thead>
         <tbody data-bind='foreach:queue'>
@@ -35,9 +35,9 @@
 	          		<input data-bind="value: url, valueUpdate: 'afterkeydown'" placeholder="URL"type="text">
 						</td>
 						<td> 
-							<a href="#" data-bind="click: $parent.removeTrack"> <i class="material-icons">delete</i></a>
+							<a href="#" data-bind="click: $parent.removeTrack" title="Delete track"> <i class="material-icons hover-grow dropbox-blue">delete</i></a>
 							
-							<a href="#" data-bind="click: function() { $parent.dropbox($index()) }"> <img height="20px" src="/img/dropbox.svg"></a>
+							<a href="#" class="dropbox-icon hover-grow" data-bind="click: function() { $parent.dropbox($index()) }" title="Choose from Dropbox"> </a>
 						</td>
 						
           </tr>

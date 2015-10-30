@@ -1,20 +1,27 @@
 
 
+$dropbox-blue: #007ee5;
+.dropbox-blue {
+  color:$dropbox-blue;
+}
+
+.dropbox-icon{
+  background: url(/img/dropbox.svg) no-repeat top left;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  background-size: contain;
+  // fill: #94d31b; //couldn't get this to work
+   background-size: 25px 25px;
+}
+
+.hover-grow { transition: all .1s ease-in-out; }
+.hover-grow:hover { transform: scale(1.1); }
+
 .group {
   display:inline-block;
 }
 
-// .seekbar-wrapper {
-//   overflow: hidden;
-//   padding-left: 10px;
-// }
-// .seekbar {
-//   width:100%;
-// }
-// .seek-info {
-//   line-height: 35px;
-//   float:left;
-// }
 .seek-text-center {
   position:absolute;
     margin-top:-10px;

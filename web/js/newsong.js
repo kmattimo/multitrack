@@ -59,7 +59,6 @@
 					multiselect: false,
 			};
 			Dropbox.choose(options);
-			
 		}
     
 	ko.applyBindings(this);
