@@ -67,6 +67,7 @@ AudioSampleLoader.prototype.send = function () {
     //If src is a valid list of strings.
     this.response = new Array(this.src.length);
     for (i = 0; i < this.src.length; i += 1) {
+      console.log('lol');
       this.loadOneOfBuffers(this.src[i], i);
     }
 
@@ -120,9 +121,23 @@ AudioSampleLoader.prototype.loadOneOfBuffers = function (url, index) {
   XHR.responseType = 'arraybuffer';
   
   XHR.onload = function () {
+    console.log('loaded 1?');
+    var numLoaded = parseInt( document.getElementById('tracksLoaded').innerHTML);
+    numLoaded++; 
+    document.getElementById('tracksLoaded').innerHTML = numLoaded;
+    var percentStr = ( ((numLoaded / loader.src.length ) * 100).toFixed(2) ) + "%";
+    document.getElementById('tracksLoadedBar').style.width = percentStr;
+    
     loader.ctx.decodeAudioData(
       XHR.response,
       function (buffer) {
+        console.log('something else');
+        var numLoaded2 = parseInt( document.getElementById('buffersLoaded').innerHTML);
+        numLoaded2++; 
+        document.getElementById('buffersLoaded').innerHTML = numLoaded2;
+        var percentString = ( ((numLoaded2 / loader.src.length ) * 100).toFixed(2) ) + "%";
+        document.getElementById('buffersLoadedBar').style.width = percentString;
+        
         loader.response[index] = buffer;
         loader.loaded += 1;
         if (loader.loaded === loader.src.length) {
