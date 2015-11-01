@@ -93,9 +93,12 @@
 					</div>
 					
 					<div class="pan-group valign-wrapper">
-							L
+							<span data-bind="click:function(){pan[{{loop.index0}}](-1)}">L</span>
+							
 							<input disabled data-bind="enable: loaded, value:  pan[{{loop.index0}}]" class="pan-slider" type="range" step=".01" min="-1" max="1" value="0" />
-							R
+							
+							<span data-bind="click:function(){pan[{{loop.index0}}](1)}">R</span>
+							
 							<span style="display:none"  data-bind="visible:pan[{{loop.index0}}], click:function(){pan[{{loop.index0}}](0)}">
 								<a title="reset pan" href="#"><i class=" valignsmall material-icons">settings_remote</i></a>
 							</span>
