@@ -27,6 +27,7 @@ var Song = function(audioLoader) {
 	this.sources = [];
 	this.gainNodes = [];
 	this.panNodes = [];
+	this.repeat = ko.observable(false);
 	this.seekTime = ko.observable();
   //paused when truthy, also time to resume
   this.pausedTime = ko.observable(0);
@@ -110,7 +111,12 @@ for(var i=0; i<self.numTracks; i++) {
 	setInterval(function() {   
 		self.seekTime(self.loader.ctx.currentTime);
 		if( self.playingTime() > self.duration ) {
-				self.playing(false);
+				if(self.repeat()) {
+					self.play(0);
+				}
+				else {
+					self.playing(false);
+				}
 		}
 	}, 250);
 		
