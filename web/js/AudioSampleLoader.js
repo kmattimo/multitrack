@@ -25,6 +25,8 @@
 
 //Forward-declare AudioContext for Safari and older Google Chrome.
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
+window.numTracksLoaded = 0;
+window.numBuffersLoaded = 0;
 
 function AudioSampleLoader() {
   "use strict";
@@ -122,20 +124,16 @@ AudioSampleLoader.prototype.loadOneOfBuffers = function (url, index) {
   
   XHR.onload = function () {
     console.log('loaded 1?');
-    var numLoaded = parseInt( document.getElementById('tracksLoaded').innerHTML);
-    numLoaded++; 
-    document.getElementById('tracksLoaded').innerHTML = numLoaded;
-    var percentStr = ( ((numLoaded / loader.src.length ) * 100).toFixed(2) ) + "%";
+    numTracksLoaded++;
+    var percentStr = ( ((numTracksLoaded / loader.src.length ) * 100).toFixed(2) ) + "%";
     document.getElementById('tracksLoadedBar').style.width = percentStr;
     
     loader.ctx.decodeAudioData(
       XHR.response,
       function (buffer) {
         console.log('something else');
-        var numLoaded2 = parseInt( document.getElementById('buffersLoaded').innerHTML);
-        numLoaded2++; 
-        document.getElementById('buffersLoaded').innerHTML = numLoaded2;
-        var percentString = ( ((numLoaded2 / loader.src.length ) * 100).toFixed(2) ) + "%";
+        numBuffersLoaded++; 
+        var percentString = ( ((numBuffersLoaded / loader.src.length ) * 100).toFixed(2) ) + "%";
         document.getElementById('buffersLoadedBar').style.width = percentString;
         
         loader.response[index] = buffer;

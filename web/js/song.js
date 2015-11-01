@@ -7,6 +7,7 @@ var loaderWrapper = function (URLs) {
 		console.log("Loader error!"); 
 		//no knockoutjs loaded yet, so lets go back to basics
 		document.getElementById("song-error").style.display="block";
+		document.getElementById("song-loading").style.display="none";
 	};
 	
 	this.loader.onload = function () { 	song = new Song(this); };
