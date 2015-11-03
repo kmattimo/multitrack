@@ -22,10 +22,10 @@
 	
 <div class="row"> 
 	<div class="col s12">
-		<h2 class="center"> {{song.songtitle}} </h2>
+		<h2 class="center seti-green-text"> {{song.songtitle}} </h2>
 		
 		<div class="song-loading" id="song-loading" data-bind="visible:!loaded" >
-			<div class="card seti-yellow-text">
+			<div class="card seti-green-text">
 				<div class="card-content center">
 					<span class="card-title">Loading {{numTracks}} tracks...</span>
 					<p class=""> 
@@ -50,7 +50,7 @@
 		</div>
 		
 		<ul class="collection with-header">
-			<li class="collection-header grey lighten-4">
+			<li class="collection-header">
 				
 				<button class= "waves-effect waves-light btn" disabled data-bind="enable: loaded, click: function(){song.playPause()}" id="play" type="button">
 					<i class="material-icons" data-bind="text: playing() ? 'pause' : 'play_arrow' ">loop</i>
@@ -73,7 +73,7 @@
 				</div>
 				
 				<br>
-				<div class= "seek-group">
+				<div class= "seek-group seti-blue-text">
 					<!-- <div class="seek-info">
 						Seek: <span data-bind="text:playingTime">0</span>s
 					</div> -->

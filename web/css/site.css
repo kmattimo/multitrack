@@ -7004,7 +7004,7 @@ select {
         background-color: #4CAF50; }
 
 html {
-  color: #fff; }
+  color: #4f99d3; }
 
 nav {
   background-color: #424242;
@@ -7013,13 +7013,16 @@ nav {
 .card {
   color: #9fca56; }
   .card .card-title {
-    color: #a074c4; }
+    color: #9fca56; }
 
 .collection-header {
-  color: #a074c4; }
+  color: #9fca56; }
 
 .inline-block {
   display: inline-block; }
+
+input[type=range] {
+  border: none; }
 
 .dropbox-blue {
   color: #007ee5; }

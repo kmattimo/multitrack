@@ -1,6 +1,7 @@
 //override typography file
 html {
-    color: #fff;
+    color: $seti-blue;
+    // color: #fff;
 }
 nav {
     background-color: color("grey", "darken-3");
@@ -8,16 +9,25 @@ nav {
 }
 .card {
   .card-title {
-    color: $seti-purple;
+    color: $seti-green;
   }
   color: $seti-green;
 }
 .collection-header {
-    color: $seti-purple;
+    color: $seti-green;
 }
 
 .inline-block {
     display:inline-block;
+}
+
+input[type=range] {
+    border: none;
+    // border: 1px solid $seti-green;
+}
+
+input[type=range]::-webkit-slider-runnable-track { 
+  // background: $seti-green;
 }
 
 $dropbox-blue: #007ee5;
