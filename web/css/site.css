@@ -7027,9 +7027,6 @@ th {
 input[type=range] {
   border: none; }
 
-.dropbox-blue {
-  color: #007ee5; }
-
 .dropbox-icon {
   background: url(/img/dropbox.svg) no-repeat top left;
   height: 25px;

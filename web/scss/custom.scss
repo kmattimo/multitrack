@@ -29,15 +29,11 @@ input[type=range] {
     // border: 1px solid $seti-green;
 }
 
-input[type=range]::-webkit-slider-runnable-track { 
-  // background: $seti-green;
-}
+// input[type=range]::-webkit-slider-runnable-track { 
+//   // background: $seti-green;
+// }
 
 $dropbox-blue: #007ee5;
-.dropbox-blue {
-  color:$dropbox-blue;
-}
-
 .dropbox-icon{
   background: url(/img/dropbox.svg) no-repeat top left;
   height: 25px;
