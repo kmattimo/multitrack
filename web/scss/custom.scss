@@ -1,3 +1,20 @@
+//override typography file
+html {
+    color: #fff;
+}
+nav {
+    background-color: color("grey", "darken-3");
+    color: $seti-blue;
+}
+.card {
+  .card-title {
+    color: $seti-purple;
+  }
+  color: $seti-green;
+}
+.collection-header {
+    color: $seti-purple;
+}
 
 .inline-block {
     display:inline-block;

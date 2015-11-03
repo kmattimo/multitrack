@@ -1,9 +1,11 @@
 /*** Colors ***/
-$primary-color: color("blue", "darken-2") !default;
+// $primary-color: color("blue", "darken-2") !default;
+$primary-color: $seti-green !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: color("teal", "lighten-1") !default;
+// $secondary-color: color("teal", "lighten-1") !default;
+$secondary-color: $seti-blue !default;
 $success-color: color("green", "base") !default;
 $error-color: color("yellow", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
@@ -25,7 +27,9 @@ $button-line-height: 36px !default;
 
 /*** Cards ***/
 $card-padding: 20px !default;
-$card-bg-color: #fff !default;
+// $card-bg-color: #fff !default;
+$card-bg-color: color("grey", "darken-3") !default;
+
 $card-link-color: color("orange", "accent-2") !default;
 $card-link-color-light: lighten($card-link-color, 20%) !default;
 
@@ -97,7 +101,9 @@ $element-bottom-margin: ($gutter-width*2)/3 !default;
 /*** Navbar ***/
 $navbar-height: 64px !default;
 $navbar-height-mobile: 56px !default;
-$navbar-font-color: #fff !default;
+// $navbar-font-color: #fff !default;
+$navbar-font-color: $seti-blue !default;
+
 $navbar-brand-font-size: 2.1rem !default;
 
 /*** SideNav ***/
@@ -118,8 +124,11 @@ $tabs-text-color: $primary-color !default;
 $tabs-bg-color: #fff !default;
 
 /*** Tables ***/
-$table-border-color: #d0d0d0 !default;
-$table-striped-color: #f2f2f2 !default;
+//dark theme
+// $table-border-color: #d0d0d0 !default;
+// $table-striped-color: #f2f2f2 !default;
+$table-border-color: color("grey", "base") !default;
+$table-striped-color: #393939 !default;
 
 /*** Toasts ***/
 $toast-height: 48px !default;
@@ -145,11 +154,16 @@ $intervals: 20 !default;
 $interval-size: $range / $intervals !default;
 
 /*** Collections ***/
-$collection-border-color: #e0e0e0 !default;
-$collection-bg-color: #fff !default;
+//dark theme
+// $collection-border-color: #e0e0e0 !default;
+// $collection-bg-color: #fff !default;
+$collection-bg-color: color("grey", "darken-3") !default;
+$collection-border-color: color("grey", "darken-4") !default;
+$collection-hover-bg-color: #666 !default;
+
 $collection-active-bg-color: $secondary-color !default;
 $collection-active-color: lighten($secondary-color, 55%) !default;
-$collection-hover-bg-color: #ddd !default;
+// $collection-hover-bg-color: #ddd !default;
 
 /* Progress Bar */
 $progress-bar-color: $secondary-color !default;

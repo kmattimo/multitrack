@@ -3,27 +3,29 @@
 {% block body %}
 <div class="row">
 	
-  <div class="col s12 offset-l2 l8">
+  <div class="col s12 offset-l2 l8 center">
     <br>
-    <div class="card um-yellow black-text center">
-      <div class="card-content">
-        <span class="card-title black-text"> Multitrack is a web-based practice tool. </span>
-        <p>
-          Create your own mix from multi-part practice tracks. <br>
-          Ideas:
-            <ul>
-              <li>-Isolate your part to the left and the others to the right </li>
-              <li>-Emphasize your part to learn it better</li>
-              <li>-Remove your part to see if you really know it </li>
-            </ul>
-          
+    <!-- <div class="card center"> -->
+      <!-- <div class="card-content"> -->
+				<p>
+        <h3 class="seti-purple-text"> Multitrack is a web-based practice tool. </h3>
+        <p class="seti-green-text">
+          Create your own mix from multi-part practice tracks. <br> 
+					Ideas:
+					<div class="col offset-m2 m8 center" >
+            <p class="left-align seti-green-text">
+              -Isolate your part to the left and the others to the right  <br>
+              -Emphasize your part to learn it better	<br>
+              -Remove your part to see if you really know it <br>
+            </p>
+          </div>
         </p>
-      </div>
-    </div>
+      <!-- </div> -->
+    <!-- </div> -->
   </div>
   
   
-  <div class="col s12 offset-m3 m6 center-align">
+  <div class="col s12 offset-m2 m8 center-align">
     <ul class="collection with-header center">
       <li class="collection-header "><h4>Songs</h4></li>
     	{%for song in songs %}
