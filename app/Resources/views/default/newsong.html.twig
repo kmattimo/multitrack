@@ -5,8 +5,6 @@
 <!-- <link rel="stylesheet" type="text/css" href="/css/dropzone.css"> -->
 <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="8lojncu8akfr7ua"></script>
-
-<!-- <script src="/js/dropzone.js"></script> -->
 <script src="/js/newsong.js"></script>
 
 
@@ -15,7 +13,8 @@
 		<h2 class="center seti-green-text"> Create New Song </h2>
 			<h5> Song Title:</h5>
 			<input class="song-title-input" type="text" data-bind='value:songTitle, valueUpdate: "afterkeydown"' />
-
+			 <i class="zmdi zmdi-flower-alt"></i>
+			 <i class="mdi-content-add"></i>
 			<br><br>
 
       <table class="striped">
@@ -35,7 +34,7 @@
 	          		<input data-bind="value: url, valueUpdate: 'afterkeydown'" placeholder="URL"type="text">
 						</td>
 						<td> 
-							<a href="#" data-bind="click: $parent.removeTrack" title="Delete track"> <i class="material-icons hover-grow seti-blue-text">delete</i></a>
+							<a href="#" data-bind="click: $parent.removeTrack" title="Delete track"> <i class="mdi-action-help hover-grow seti-blue-text"></i></a>
 							
 							<a href="#" class="dropbox-icon hover-grow" data-bind="click: function() { $parent.dropbox($index()) }" title="Choose from Dropbox"> </a>
 						</td>
