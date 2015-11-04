@@ -111,10 +111,16 @@
 							
 							<span data-bind="click:function(){pan[{{loop.index0}}](1)}">R</span>
 							
-							<span style="display:none"  data-bind="visible:pan[{{loop.index0}}], click:function(){pan[{{loop.index0}}](0)}">
-								<a title="reset pan" href="#"><i class=" valignsmall material-icons">settings_remote</i></a>
+							<!-- <span style="display:none"  data-bind="visible:pan[{{loop.index0}}], click:function(){pan[{{loop.index0}}](0)}">
+								<a title="reset pan" href="#"><i class="tiny-pan-icon  material-icons">code</i></a> -->
 							</span>
 					</div>
+					
+					<span style="display:none"  data-bind="visible:pan[{{loop.index0}}], click:function(){pan[{{loop.index0}}](0)}">
+						<a title="reset pan" href="#"><i class="material-icons valign seti-green-text" >restore</i></a>
+					</span>
+					
+					
 				</div>
 				</li>
 			{%endfor%}

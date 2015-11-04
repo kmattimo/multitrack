@@ -7,6 +7,9 @@ nav {
     background-color: color("grey", "darken-3");
     color: $seti-blue;
 }
+.material-icons {
+ // color: $seti-blue;  
+}
 .card {
   .card-title {
     color: $seti-green;
@@ -29,10 +32,9 @@ input[type=range] {
     // border: 1px solid $seti-green;
 }
 
-// input[type=range]::-webkit-slider-runnable-track { 
-//   // background: $seti-green;
-// }
-
+.song-title-input {
+    color: $seti-green;
+}
 $dropbox-blue: #007ee5;
 .dropbox-icon{
   background: url(/img/dropbox.svg) no-repeat top left;
@@ -84,7 +86,7 @@ $volume-slider-margin:40px;
 }
 
 $pan-slider-width:150px;
-$pan-slider-margin:100px;
+$pan-slider-margin:40px;
 .pan-slider {
   max-width: 60%;
   @media#{$medium-and-up} {
@@ -92,12 +94,18 @@ $pan-slider-margin:100px;
   }
 }
 .pan-group {
+  span { cursor: pointer };
   @extend .group;
   min-width:40%;
   @media#{$medium-and-up} {
     min-width: $pan-slider-margin + $pan-slider-width;
     margin-left: 10px;
   }
+}
+.tiny-pan-icon {
+  // font-size: 20px !important;
+  // margin-bottom:-10px;
+  // line-height: 20px;
 }
 
 
@@ -111,7 +119,5 @@ $pan-slider-margin:100px;
 }
 
 .mute-checkbox:checked + label {
-  // content:"NO";
-  // border:none;
-  color: color("materialize-red", "base") !important;
+  color: $seti-green !important;
 } 

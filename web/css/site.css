@@ -7027,6 +7027,9 @@ th {
 input[type=range] {
   border: none; }
 
+.song-title-input {
+  color: #9fca56; }
+
 .dropbox-icon {
   background: url(/img/dropbox.svg) no-repeat top left;
   height: 25px;
@@ -7074,9 +7077,11 @@ input[type=range] {
 
 .pan-group {
   min-width: 40%; }
+  .pan-group span {
+    cursor: pointer; }
   @media only screen and (min-width: 601px) {
     .pan-group {
-      min-width: 250px;
+      min-width: 190px;
       margin-left: 10px; } }
 
 .mute-checkbox + label {
@@ -7087,4 +7092,4 @@ input[type=range] {
   background: none !important; }
 
 .mute-checkbox:checked + label {
-  color: #e51c23 !important; }
+  color: #9fca56 !important; }
