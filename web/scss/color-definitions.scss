@@ -38,31 +38,15 @@ $seti-text-color-error: $seti-red;
 // 
 // @app-background-color: @background;
 
-body {
-    background-color: $seti-background;
-}
-
-$seti-blue-array: (
-"base": $seti-blue,
-);
-$seti-green-array: (
-"base": $seti-green,
-);
-$seti-purple-array: (
-"base": $seti-purple,
-);
-$seti-yellow-array: (
-"base": $seti-yellow,
-);
 // #768A9F;
 
 // #8e8c8c
 // #4D4F41
 
 $colors: (
-  "seti-blue": $seti-blue-array,
-  "seti-green": $seti-green-array,
-  "seti-purple": $seti-purple-array,
+  "seti-blue": ("base": $seti-blue),
+  "seti-green": ("base": $seti-green),
+  "seti-purple": ("base": $seti-purple),
   "seti-yellow": ("base" : $seti-yellow),
 );
 

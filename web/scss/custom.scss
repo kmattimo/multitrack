@@ -1,41 +1,5 @@
-//override typography file
-html {
-    color: $seti-blue;
-    // color: #fff;
-}
-nav {
-    background-color: color("grey", "darken-3");
-    color: $seti-blue;
-}
-.material-icons {
- // color: $seti-blue;  
-}
-.card {
-  .card-title {
-    color: $seti-green;
-  }
-  color: $seti-green;
-}
-.collection-header {
-    color: $seti-green;
-}
-th {
-  color:$seti-green;
-}
 
-.inline-block {
-    display:inline-block;
-}
-
-input[type=range] {
-    border: none;
-    // border: 1px solid $seti-green;
-}
-
-.song-title-input {
-    color: $seti-green;
-}
-$dropbox-blue: #007ee5;
+// $dropbox-blue: #007ee5;
 .dropbox-icon{
   background: url(/img/dropbox.svg) no-repeat top left;
   height: 25px;
@@ -49,24 +13,18 @@ $dropbox-blue: #007ee5;
 .hover-grow { transition: all .1s ease-in-out; }
 .hover-grow:hover { transform: scale(1.1); }
 
-.group {
-  display:inline-block;
-}
 
 .seek-text-center {
   position:absolute;
     margin-top:-10px;
 }
-.seek-group {
-  // padding-left:10px;
-}
+
 .less-mobile-padding {
   @media#{$small-and-down} {
     padding-left:5px !important;
     padding-right:5px !important;
   }
 }
-
 
 $volume-slider-width:150px;
 $volume-slider-margin:40px;
@@ -77,7 +35,9 @@ $volume-slider-margin:40px;
   }
 }
 .volume-group {
-  @extend .group;
+  display:inline-block;
+  //this feature is awesome but not worth doing here
+    // @extend .group; 
   min-width:50%;
   @media#{$medium-and-up} {
     min-width: $volume-slider-margin + $volume-slider-width;
@@ -95,20 +55,23 @@ $pan-slider-margin:40px;
 }
 .pan-group {
   span { cursor: pointer };
-  @extend .group;
+  display: inline-block;
   min-width:40%;
   @media#{$medium-and-up} {
     min-width: $pan-slider-margin + $pan-slider-width;
     margin-left: 10px;
   }
 }
-.tiny-pan-icon {
-  // font-size: 20px !important;
-  // margin-bottom:-10px;
-  // line-height: 20px;
+
+.inline-block {
+    display:inline-block;
 }
 
-
+input[type=range] {
+    border: none;
+    // border: 1px solid $seti-green;
+}
+//override materialize crazy checkbox styling
 .mute-checkbox + label{
   padding-left:0 !important;
 }
@@ -117,7 +80,6 @@ $pan-slider-margin:40px;
     border:none !important;
     background: none !important;
 }
-
 .mute-checkbox:checked + label {
   color: $seti-green !important;
 } 

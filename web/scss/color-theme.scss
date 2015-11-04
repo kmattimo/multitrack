@@ -1,0 +1,24 @@
+//Define colors of some materialize classes, 
+//stuff that isn't in the variables file
+
+//override typography file
+html {
+    color: $seti-blue;
+    // color: #fff;
+}
+body {
+    background-color: $seti-background;
+}
+nav {
+    background-color: color("grey", "darken-3");
+    color: $seti-blue;
+}
+.card {
+  .card-title {
+    color: $seti-green;
+  }
+  color: $seti-green;
+}
+.collection-header,th, .song-title-input {
+    color: $seti-green;
+}
