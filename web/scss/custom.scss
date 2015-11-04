@@ -1,4 +1,26 @@
+html{
+  // font-family: Roboto, GillSans, Calibri, Trebuchet, sans-serif;
+  //sans serif looks good. no thanks to more font requests
+  font-family: sans-serif;
+}
+body {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+ }
 
+ main {
+   flex: 1 0 auto;
+ }
+
+.dumb-footer {
+  // position:fixed;
+  width:100%;
+	height:64px;
+	position:absolute;
+	bottom:0;
+	left:0;
+}
 // $dropbox-blue: #007ee5;
 .dropbox-icon{
   background: url(/img/dropbox.svg) no-repeat top left;

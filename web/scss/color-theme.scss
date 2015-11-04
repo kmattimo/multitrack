@@ -1,6 +1,7 @@
 //Define colors of some materialize classes, 
 //stuff that isn't in the variables file
 
+
 //override typography file
 html {
     color: $seti-blue;
@@ -8,11 +9,31 @@ html {
 }
 body {
     background-color: $seti-background;
+    a {
+        // color: #fff;
+        color: color("grey", "lighten-1");
+        // color: lighten($seti-background-lighter, 30%);
+    }
 }
 nav {
     background-color: color("grey", "darken-3");
+    //why does this turn it green......
+    // background-color: $secondary-grey;
     color: $seti-blue;
 }
+
+footer.page-footer {
+  //override materialize
+   padding-top: 0px;
+  .footer-copyright {
+    color: color("grey", "lighten-1");;
+    a {
+        color: $seti-blue;
+    }
+    background-color: $secondary-grey;
+  }
+}
+
 .card {
   .card-title {
     color: $seti-green;
