@@ -26,11 +26,12 @@ footer.page-footer {
   //override materialize
    padding-top: 0px;
   .footer-copyright {
-    color: color("grey", "lighten-1");;
+    color: color("grey", "lighten-1");
     a {
         color: $seti-blue;
     }
-    background-color: $secondary-grey;
+    //secondary grey variable defined in previous file is doing weird shit
+    background-color: color("grey", "darken-3");
   }
 }
 

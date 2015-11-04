@@ -4395,7 +4395,7 @@ footer.page-footer {
   padding-top: 0px; }
   footer.page-footer .footer-copyright {
     color: #bdbdbd;
-    background-color: color("grey", "darken-3"); }
+    background-color: #424242; }
     footer.page-footer .footer-copyright a {
       color: #4f99d3; }
 
