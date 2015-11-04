@@ -13,22 +13,49 @@
 	
     </head>
     <body>
-
+<header>
     <nav >
        <div class="nav-wrapper">
-         <a href="/" class="brand-logo center">multitrack</a>
-         <ul id="nav-mobile" class="left">
-           <li><a href="/newsong">New Song</a></li>
-         </ul>
+         <div class="container">
+           <a href="/" class="brand-logo center">multitrack</a>
+           <ul id="nav-mobile" class="left">
+             <li><a href="/newsong">New Song</a></li>
+           </ul>
+         </div>
        </div>
      </nav>
-
+</header>
+<main>
 
     <div class="container">
 
     {% block body %}{% endblock %}
     
     </div>
+    
+    <!-- <div class="dumb-footer">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo center">multitrack</a>
+          <ul id="nav-mobile" class="left">
+            <li><a href="/newsong">New Song</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div> -->
+</main>
+<footer>
+  <footer class="page-footer">
+      <div class="footer-copyright">
+        <div class="container">
+          Built by <a href="//www.kylemattimore.com" target="_blank">Kyle Mattimore</a>
+          <span class="right">
+            Multitrack is on <a href="https://github.com/kmattimo/multitrack" target="_blank">GitHub</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+</footer>    
     {% block javascripts %}
 		
 			
