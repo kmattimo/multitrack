@@ -4,7 +4,7 @@ var browserSync = require('browser-sync').create();
 
 //all scss imported in site.scss, except page-specific stuff
 var input = './web/scss/site.scss';
-var watchFiles = './web/scss/**/*.scss';
+var watchFiles = ['./web/scss/**/*.scss', './web/materialize-src/sass/components/*.scss'];
 var templateFiles = './app/Resources/views/**/*.twig';
 var jsFiles= './web/js/**/*.js';
 var output = './web/css/';
