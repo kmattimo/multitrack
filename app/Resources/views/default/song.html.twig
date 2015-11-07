@@ -91,10 +91,9 @@
 				{{track.tracktitle}} 	<a href="{{track.url}}">&nbspdl</a>
 				<br>
 				<div class="valign-wrapper">
-						<!-- <i class="material-icons" data-bind="text: muted[0]()? 'volume_mute':'volume_off', toggleClick: muted[0] "></i> -->
-					<input type="checkbox" data-bind="checked: muted[{{loop.index0}}]" class="mute-checkbox filled-in" id="track{{loop.index0}}mute" />
+					<input disabled type="checkbox" data-bind="enable: loaded, checked: muted[{{loop.index0}}]" class="mute-checkbox filled-in" id="track{{loop.index0}}mute" />
       		<label for="track{{loop.index0}}mute">
-						<i class="material-icons valign" data-bind="text: muted[{{loop.index0}}]()? 'volume_up':'volume_off'">volume_off</i>
+						<i class="material-icons valign" data-bind="text: muted[{{loop.index0}}]()? 'volume_off':'volume_up'">volume_up</i>
 					</label>
 				
 					<div class="volume-group">
