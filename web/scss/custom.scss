@@ -2,6 +2,7 @@ html{
   // font-family: Roboto, GillSans, Calibri, Trebuchet, sans-serif;
   //sans serif looks good. no thanks to more font requests
   font-family: sans-serif;
+  // font-family: Roboto;
 }
 body {
    display: flex;
@@ -13,13 +14,12 @@ body {
    flex: 1 0 auto;
  }
 
-.dumb-footer {
-  // position:fixed;
-  width:100%;
-	height:64px;
-	position:absolute;
-	bottom:0;
-	left:0;
+.tweaked-btn {
+    letter-spacing: normal;
+    text-transform: none;
+    i {
+      vertical-align: middle;  
+    }
 }
 // $dropbox-blue: #007ee5;
 .dropbox-icon{

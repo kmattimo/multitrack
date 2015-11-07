@@ -32,9 +32,9 @@
 	          		<input data-bind="value: url, valueUpdate: 'afterkeydown'" placeholder="URL"type="text">
 						</td>
 						<td> 
-							<a href="#" data-bind="click: $parent.removeTrack" title="Delete track"> <i class="material-icons  hover-grow seti-blue-text">delete</i></a>
-							
 							<a href="#" class="dropbox-icon hover-grow" data-bind="click: function() { $parent.dropbox($index()) }" title="Choose from Dropbox"> </a>
+							&nbsp;
+							<a href="#" data-bind="click: $parent.removeTrack" title="Delete track"> <i class="material-icons  hover-grow seti-blue-text">delete</i></a>
 						</td>
 						
           </tr>
@@ -43,15 +43,15 @@
 
 			<br><br>
 			
-			<button title="Add Track" class="waves-effect waves-light btn" data-bind='click:addTrack'>
+			<button title="Add Track" class="waves-effect waves-light btn tweaked-btn" data-bind='click:addTrack'>
 				<i class="material-icons">playlist_add</i> Add Track
 			</button> 
-	
-			<button title="Save Song" class="waves-effect waves-light btn" data-bind='enable: isValid()' id="saveSong">
+			&nbsp;
+			<button title="Save Song" class="waves-effect waves-light btn tweaked-btn" data-bind='enable: isValid()' id="saveSong">
 				<i class="material-icons">done</i> Save
 			</button>
-
-			<a href="/" title="Cancel" class="waves-effect waves-light btn">
+			&nbsp;
+			<a href="/" title="Cancel" class="waves-effect waves-light btn tweaked-btn">
 				<i class="material-icons">not_interested</i> Cancel
 			</a> 
 			

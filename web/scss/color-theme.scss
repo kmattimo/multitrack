@@ -1,6 +1,8 @@
 //Define colors of some materialize classes, 
 //stuff that isn't in the variables file
 
+//umm so I guess I don't need this now?
+// @import "./color-definitions";
 
 //override typography file
 html {
@@ -9,16 +11,9 @@ html {
 }
 body {
     background-color: $seti-background;
-    a {
-        // color: #fff;
-        color: color("grey", "lighten-1");
-        // color: lighten($seti-background-lighter, 30%);
-    }
 }
 nav {
-    background-color: color("grey", "darken-3");
-    //why does this turn it green......
-    // background-color: $secondary-grey;
+    background-color: $secondary-grey;
     color: $seti-blue;
 }
 
@@ -30,8 +25,7 @@ footer.page-footer {
     a {
         color: $seti-blue;
     }
-    //secondary grey variable defined in previous file is doing weird shit
-    background-color: color("grey", "darken-3");
+    background-color: $secondary-grey;
   }
 }
 
@@ -43,4 +37,8 @@ footer.page-footer {
 }
 .collection-header,th, .song-title-input {
     color: $seti-green;
+}
+
+input[type="range"] {
+    color: red;
 }

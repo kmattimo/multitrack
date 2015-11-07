@@ -55,7 +55,7 @@
 				<button class= "waves-effect waves-light btn" disabled data-bind="enable: loaded, click: function(){song.playPause()}" id="play" type="button">
 					<i class="material-icons" data-bind="text: playing() ? 'pause' : 'play_arrow' ">loop</i>
 				</button>
-								
+				&nbsp;		
 				<button class="waves-effect waves-light btn" disabled data-bind="enable: loaded && playing" onclick="song.stop()">
 					<i class="material-icons">stop</i>
 				</button>
@@ -88,7 +88,7 @@
 				
 			{%for track in tracks%}
 				<li class="collection-item less-left-padding less-mobile-padding">
-				{{track.tracktitle}} 	<a href="{{track.url}}">dl</a>
+				{{track.tracktitle}} 	<a href="{{track.url}}">&nbspdl</a>
 				<br>
 				<div class="valign-wrapper">
 						<!-- <i class="material-icons" data-bind="text: muted[0]()? 'volume_mute':'volume_off', toggleClick: muted[0] "></i> -->

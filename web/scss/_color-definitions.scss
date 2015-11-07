@@ -1,4 +1,5 @@
 // 
+@import '../materialize-src/sass/components/color';
 // $primary-color: color("materialize-red", "lighten-2") !default;
 // $primary-color-light: false !default;
 // $primary-color-dark: false !default;
@@ -24,7 +25,9 @@ $seti-background: rgb(21,23,24);
 $seti-background-lighter: #333;
 $seti-text: #aaa;
 
-$secondary-grey: color("grey", "darken-3");
+$secondary-grey: color("grey", "darken-4");
+$font-grey: color("grey", "lighten-1");
+$ui-grey: color("grey", "darken-2");
 
 $seti-text-color-info: $seti-blue;
 $seti-text-color-success: $seti-green;
@@ -45,40 +48,17 @@ $seti-text-color-error: $seti-red;
 // #8e8c8c
 // #4D4F41
 
-$colors: (
+$colors2: (
   "seti-blue": ("base": $seti-blue),
   "seti-green": ("base": $seti-green),
   "seti-purple": ("base": $seti-purple),
   "seti-yellow": ("base" : $seti-yellow),
 );
 
-//lets put the colors in one place instead of adding classes everywhere
-//materialize important sadness
-// $dark-header :  color("um-blue", "lighten-1");
-// $dark-grey:  #4D4F41;
-// 
-// body {
-//   background-color: color("um-blue", "lighten-3");
-//  }
-//  .collection {
-//   border-color: $dark-header;
-//  }
-// nav, .collection-header {
-//   background-color: $dark-header !important;
-//   color: color("um-yellow", "base");
-// }
-// .collection-item{
-//   background-color: $dark-grey !important;
-//   color: #FFF !important;
-// }
-// 
-// nav a {
-//     color: color("um-yellow", "base") !important;
-// }
 
 // Color Classes BORROWED FROM MATERIALIZE SCSS
 
-@each $color_name, $color in $colors {
+@each $color_name, $color in $colors2 {
   @each $color_type, $color_value in $color {
     @if $color_type == "base" {
       .#{$color_name} {
@@ -103,12 +83,12 @@ $colors: (
 // to avoid to repeating map-get($colors, ...)
 
 @function color($color, $type) {
-  @if map-has-key($colors, $color) {
-    $curr_color: map-get($colors, $color);
+  @if map-has-key( $colors2, $color) {
+    $curr_color: map-get( $colors2, $color);
     @if map-has-key($curr_color, $type) {
       @return map-get($curr_color, $type);
     }
   }
-  @warn "Unknown `#{name}` in $colors.";
+  @warn "Unknown `#{name}` in  $colors2.";
   @return null;
 }
