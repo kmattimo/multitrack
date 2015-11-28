@@ -4,11 +4,10 @@
   "description": "dev files for multitrack",
   "main": "Gulpfile.js",
   "dependencies": {
-    "audio-rms": "^1.1.0"
+    /*"audio-rms": "^1.1.0"*/
   },
   "devDependencies": {
     "browser-sync": "^2.9.11",
-    "browserify": "^11.2.0",
     "gulp": "^3.9.0",
     "gulp-sass": "^2.0.4"
   },
