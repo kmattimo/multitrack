@@ -5,7 +5,8 @@
 /app/logs/*
 !app/logs/.gitkeep
 /app/phpunit.xml
-/bin/
+/bin/*
+!/bin/keep_this_directory
 /composer.phar
 /vendor/
 /web/bundles/
