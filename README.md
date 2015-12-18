@@ -24,6 +24,8 @@ Installation
 - Configure database schema
 - set BUILDPACK_URL= https://github.com/heroku/heroku-buildpack-php, if heroku/dokku thinks it is a nodejs app
 - set SYMFONY_ENV=prod
+- set SYMFONY_SECRET to random stuff
+- set PDO_DRIVER (should default to pdo_pgsql)
 - dokku/heroku postgres:create multitrack-postgres
 - dokku/heroku postgres:link multitrack-postgres multitrack
 
