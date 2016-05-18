@@ -15,7 +15,7 @@ The song object uses knockoutJS observables to bind to the UI.
 Gulp/Sass/browsersync workflow. Front-end with trimmed down Materialize framework SCSS. Please let me know if you like the text-editor themed dark color scheme or not :)
 
 
-Demo at http://multitrack.kylemattimore.com - Currently on heroku free instance, so be patient on the initial load :)
+Demo at https://multitrack.kylemattimore.com 
 
 
 
